@@ -1,10 +1,10 @@
 {
-  "name": "myApp",
-  "bundleId": "fr.adfab.myapp",
+  "name": "contestManager",
+  "bundleId": "fr.ingesup.contestManager",
   "version": "0.0.1",
   "description": "A ready-to-go structure for cordova and angular",
   "author": {
-    "name": "Adfab Connect"
+    "name": "Torres Sudre-Rouffaux"
   },
   "devDependencies": {
     "browserify": "^9.0.3",
