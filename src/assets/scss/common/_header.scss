@@ -7,14 +7,14 @@
     line-height: $header-height;
 
     text-align: center;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #777777;
     z-index: 8; // Over content and overlay, under menu
     &-menu-link {
         position: absolute;
         top: 0;
         left: 0;
         background-color: #353535;
-        border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #777777;
         width: $width-nav;
     }
 
@@ -22,6 +22,6 @@
         position: relative;
         margin-left: 50px;
         background-color: #353535;
-        border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #777777;
     }
 }

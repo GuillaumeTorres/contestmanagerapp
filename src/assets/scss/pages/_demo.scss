@@ -16,12 +16,15 @@ a {
         margin: 20px 0;
         text-align: center;
     }
-    p, ul {
+    ul {
         margin: $content-offset;
     }
     li {
         list-style: square;
         margin-left: 30px;
+    }
+    p {
+        margin-top: 50%;
     }
 }
 .side-menu {
@@ -38,7 +41,7 @@ a {
     }
 }
 .view-container {
-    background: #E2E2E2;
+    background: #777777;
 }
 // Adds an overlay on content when menu is open
 #pusher {
