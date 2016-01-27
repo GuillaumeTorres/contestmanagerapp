@@ -39,18 +39,22 @@ angular.module('myApp', [
     		controller: 'HomeCtrl',
     		controllerAs: 'home'
 	    })
-	    .state('app.transitions', {
-	        url: '/transitions',
-    		templateUrl: 'modules/demo/transitions.view.html',
+	    .state('app.equipe', {
+	        url: '/mon-equipe',
+    		templateUrl: 'modules/demo/equipe.view.html',
 	    })
-	    .state('app.menu', {
-	        url: '/menu',
-    		templateUrl: 'modules/demo/menu.view.html',
+	    .state('app.matchs', {
+	        url: '/matchs',
+    		templateUrl: 'modules/demo/matchs.view.html',
 	    })
-	    .state('app.modules', {
-	        url: '/modules',
-    		templateUrl: 'modules/demo/modules.view.html',
-	    });
+	    .state('app.scores', {
+	        url: '/scores',
+    		templateUrl: 'modules/demo/scores.view.html',
+	    })
+      .state('app.ficheDePoints', {
+          url: '/ficheDePoints',
+        templateUrl: 'modules/demo/ficheDePoints.view.html',
+      });
     }
 ])
 
