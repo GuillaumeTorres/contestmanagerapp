@@ -1,0 +1,13 @@
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #353535;
+    height: $footer-height;
+    line-height: $footer-height;
+
+    text-align: center;
+    border-bottom: 1px solid #353535;
+    z-index: 8; // Over content and overlay, under menu
+}
