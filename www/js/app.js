@@ -22,3 +22,101 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.controller('MatchCtrl', function ($scope) {
+  
+
+  $scope.onSwipeLeft = function () {
+      alert('message');
+    };
+    
+  $scope.articles = {
+    items:[{
+              "_id": "1",
+              "team_1": "Myers",
+              "team_2": "Leblanc",
+              "date": "2016-01-08 01:38:09",
+              "table": 13
+            },
+            {
+              "_id": "2",
+              "team_1": "Mcdaniel",
+              "team_2": "Knight",
+              "date": "2014-10-08 04:02:00",
+              "table": 15
+            },
+            {
+              "_id": "3",
+              "team_1": "Rowe",
+              "team_2": "Osborne",
+              "date": "2015-12-19 10:21:57",
+              "table": 7
+            },
+            {
+              "_id": "4",
+              "team_1": "Mcfarland",
+              "team_2": "Chan",
+              "date": "2014-01-10 11:09:27",
+              "table": 11
+            },
+            {
+              "_id": "5",
+              "team_1": "Shepard",
+              "team_2": "Humphrey",
+              "date": "2015-01-28 05:49:40",
+              "table": 15
+            },
+            {
+              "_id": "6",
+              "team_1": "William",
+              "team_2": "Bonner",
+              "date": "2015-03-29 06:11:34",
+              "table": 11
+            },
+            {
+              "_id": "7",
+              "team_1": "Bond",
+              "team_2": "Valdez",
+              "date": "2014-12-24 07:05:15",
+              "table": 4
+            }],
+            select: function(article){
+              // Le template a passé un paramètre, la variable article correspond à l'article sur lequel on a cliqué
+              console.log(article);
+            }
+  };
+
+})
+
+
+
+.config(function($stateProvider, $urlRouterProvider) {
+  
+  $stateProvider.state('home', {
+    url:'/home',
+    templateUrl: 'templates/home.html'
+  })
+
+  $stateProvider.state('match', {
+    url:'/match',
+    templateUrl: 'templates/match.html',
+    controller: 'MatchCtrl'
+  })
+
+  $stateProvider.state('scores', {
+    url:'/scores',
+    templateUrl: 'templates/scores.html'
+  })
+
+  $stateProvider.state('profile', {
+    url:'/profile',
+    templateUrl: 'templates/profile.html'
+  })
+
+  $stateProvider.state('mission', {
+    url:'/mission',
+    templateUrl: 'templates/mission.html'
+  })
+
+  $urlRouterProvider.otherwise('/home')
+});

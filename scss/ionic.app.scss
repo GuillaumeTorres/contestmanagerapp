@@ -21,3 +21,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+.m_content {
+	height:100%;
+	top: 10%;
+}
+
+.m_button {
+	height: 16%;
+}
