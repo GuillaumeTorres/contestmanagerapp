@@ -22,6 +22,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 
+/* Empty. Add your own CSS if you like */
+
 .m_content {
 	height:100%;
 	top: 10%;
@@ -29,4 +31,23 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .m_button {
 	height: 16%;
+}
+
+.center {
+    text-align: center;
+}
+
+.show {
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+  
+@keyframes slidein {
+  from {
+    height: 70px;
+  }
+  
+  to {
+    height: 200px;
+  }
 }

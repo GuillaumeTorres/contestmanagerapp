@@ -9731,9 +9731,23 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+/* Empty. Add your own CSS if you like */
 .m_content {
   height: 100%;
   top: 10%; }
 
 .m_button {
   height: 16%; }
+
+.center {
+  text-align: center; }
+
+.show {
+  animation-duration: 1s;
+  animation-name: slidein; }
+
+@keyframes slidein {
+  from {
+    height: 70px; }
+  to {
+    height: 200px; } }
