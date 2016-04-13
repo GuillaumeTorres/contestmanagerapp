@@ -1,9 +1,13 @@
 <ion-view view-title="Matchs">
-	<ion-content>{{articles.items.team_1}}
-	<div class="card" ng-repeat="article in articles.items" ng-click="articles.select(article)">
-	  <div class="item item-text-wrap" on-swipe-left="onSwipeleft()">
-	  	
-	  </div>
-	</div>	
+	<ion-content>
+		<div class="card clearfix" ng-repeat="article in articles.items" ng-class="{'show': show}">
+		  <div class="item item-text-wrap" on-swipe-left="onSwipeleft()" ng-click="show=!show">
+		  	<div class="row">
+		  		<span class="col col-33 center">{{article.team_1}}</span>
+		  		<span class="col col-33 center">VS</span>
+		  		<span class="col col-33 center">{{article.team_2}}</span>
+		  	</div>
+		  </div>
+		</div>		
 	</ion-content>
 </ion-view>

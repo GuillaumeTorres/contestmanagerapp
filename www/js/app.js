@@ -23,7 +23,7 @@ angular.module('starter', ['ionic'])
   });
 })
 
-.controller('MatchCtrl', function ($scope) {
+.controller('MatchCtrl', function ($scope, $ionicPopover) {
   
 
   $scope.onSwipeLeft = function () {
@@ -75,6 +75,27 @@ angular.module('starter', ['ionic'])
             },
             {
               "_id": "7",
+              "team_1": "SQDFSDF",
+              "team_2": "Chan",
+              "date": "2014-01-10 11:09:27",
+              "table": 11
+            },
+            {
+              "_id": "8",
+              "team_1": "fqofiqsodf",
+              "team_2": "Humphrey",
+              "date": "2015-01-28 05:49:40",
+              "table": 15
+            },
+            {
+              "_id": "9",
+              "team_1": "qsdssdescs",
+              "team_2": "Bonner",
+              "date": "2015-03-29 06:11:34",
+              "table": 11
+            },
+            {
+              "_id": "10",
               "team_1": "Bond",
               "team_2": "Valdez",
               "date": "2014-12-24 07:05:15",
