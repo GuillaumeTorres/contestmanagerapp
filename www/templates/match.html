@@ -2,7 +2,7 @@
 	<ion-content>
 		<div class="card clearfix" ng-repeat="match in users">
 		  <div class="item item-text-wrap div_match" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show: show}">
-		  	<div class="row div_match">
+		  	<div class="row div_match" ng-class="{div_match_active: show}">
 		  		<span class="col col-40 center">{{match.team1.name}}</span>
 		  		<span class="col col-20 center">VS</span>
 		  		<span class="col col-40 center">{{match.team2.name}}</span>

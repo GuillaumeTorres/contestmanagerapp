@@ -38,7 +38,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .show {
-	height: 185px !important;
+	height: 170px !important;
 }
 
 .center{
@@ -52,6 +52,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .div_match{
 	height: 70px;
 	transition: height 1s;
+}
+
+.div_match_active{
+	height: 50px !important;
 }
 
 .block{

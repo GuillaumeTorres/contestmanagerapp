@@ -11,9 +11,9 @@
 				<span class="item">Arbitre de la team : {{team.arbiter.username}}</span>
 			</div>
 			<div ng-repeat="user in team.users">
-				<span class="item center item-divider">User {{$index+1}}</span>
-				<span class="item">Prenom : {{user.first_name}}</span>
-				<span class="item">Nom : {{user.last_name}}</span>
+				<span class="item center item-divider" ng-click="show=!show">User {{$index+1}}</span>
+				<span class="item" ng-show="show">Prenom : {{user.first_name}}</span>
+				<span class="item" ng-show="show">Nom : {{user.last_name}}</span>
 			</div>
 		</div>	
 	</ion-content>

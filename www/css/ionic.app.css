@@ -9743,7 +9743,7 @@ a.button {
   text-align: center; }
 
 .show {
-  height: 185px !important; }
+  height: 170px !important; }
 
 .center {
   text-align: center; }
@@ -9754,6 +9754,9 @@ a.button {
 .div_match {
   height: 70px;
   transition: height 1s; }
+
+.div_match_active {
+  height: 50px !important; }
 
 .block {
   display: block; }

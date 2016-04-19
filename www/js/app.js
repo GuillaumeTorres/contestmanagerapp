@@ -24,12 +24,30 @@ angular.module('starter', ['ionic'])
   });
 })
 
+.directive('scrollOnClick', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, $elm, attrs) {
+      var idToScroll = attrs.href;
+      $elm.on('click', function() {
+        var $target;
+        if (idToScroll) {
+          $target = $(idToScroll);
+        } else {
+          $target = $elm;
+        }
+        $("body").animate({scrollTop: $target.offset().top}, "slow");
+      });
+    }
+  }
+})
+
 .controller('MatchCtrl', function ($scope, $ionicPopover, $http) {
 
   $scope.onSwipeLeft = function () {
       alert('message');
     };
-
+    
   function show() {
     console.log('show : ');
   }
