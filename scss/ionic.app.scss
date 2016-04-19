@@ -38,16 +38,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .show {
-  animation-duration: 1s;
-  animation-name: slidein;
+	height: 185px !important;
 }
-  
-@keyframes slidein {
-  from {
-    height: 70px;
-  }
-  
-  to {
-    height: 200px;
-  }
+
+.center{
+	text-align: center;
+}
+
+.btn-infos{
+	margin-left: 32%;
+}
+
+.div_match{
+	height: 70px;
+	transition: height 1s;
+}
+
+.block{
+	display: block;
 }
