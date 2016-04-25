@@ -61,3 +61,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .block{
 	display: block;
 }
+
+.finish {
+	background-color: #0FEF20;
+}
+
+.not-finish {
+	background-color: #FF5800;
+}
+
+.login {
+	visibility: hidden;
+}

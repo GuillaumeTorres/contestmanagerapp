@@ -21,22 +21,11 @@ angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-  });
-})
-
-.controller('IndexCtrl', function($scope, LoginService, $ionicPopup, $state) {
-    $scope.menu = false;
     $scope.data = {};
-    $scope.lol = false;
-    $scope.test2 = 'true';
-    $scope.test = function() {
-        console.log('OUIIIIIIIIIIII');
-    }
  
     $scope.login = function() {
         LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            $scope.lol = true;
-            $state.go('home');
+            $state.go('/home');
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -44,6 +33,7 @@ angular.module('starter', ['ionic'])
             });
         });
     }
+  });
 })
 
 .directive('scrollOnClick', function() {
@@ -69,7 +59,6 @@ angular.module('starter', ['ionic'])
   $scope.onSwipeLeft = function () {
       alert('message');
   };
-  $scope.lol = true;
 
   $scope.finished = function (finished){
     if(finished) return true;
@@ -95,7 +84,6 @@ angular.module('starter', ['ionic'])
 
 .controller('ProfilCtrl', function ($scope, $ionicPopover, $http) {
 
-  $scope.lol = true;
   // Simple GET request example:
   $http({
     method: 'GET',
@@ -128,7 +116,6 @@ angular.module('starter', ['ionic'])
 
   console.log('Id = ' + $stateParams.id);
   var id = $stateParams.id;
-  $scope.lol = true;
   // Simple GET request example:
   $http({
     method: 'GET',
@@ -149,6 +136,20 @@ angular.module('starter', ['ionic'])
     });
 })
 
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+    $scope.data = {};
+ 
+    $scope.login = function() {
+        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+            $state.go('/home');
+        }).error(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: 'Please check your credentials!'
+            });
+        });
+    }
+})
 .service('LoginService', function($q) {
     return {
         loginUser: function(name, pw) {
