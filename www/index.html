@@ -44,8 +44,11 @@
           <ion-item menu-close ui-sref="mission">
           Feuille des Missions
           </ion-item>
-          <ion-item menu-close ui-sref="profile">
+          <ion-item ng-if="!team" menu-close ui-sref="profile">
           Profile
+          </ion-item>
+          <ion-item ng-if="team" menu-close ui-sref="team({ id: id})">
+          Profile Team
           </ion-item>
         </ion-list>
       </ion-side-menu>
