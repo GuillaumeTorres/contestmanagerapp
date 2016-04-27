@@ -9745,9 +9745,6 @@ a.button {
 .show {
   height: 170px !important; }
 
-.show_finish {
-  height: 190px !important; }
-
 .center {
   text-align: center; }
 
@@ -9772,3 +9769,6 @@ a.button {
 
 .login {
   visibility: hidden; }
+
+.show_finish {
+  height: 190px !important; }
