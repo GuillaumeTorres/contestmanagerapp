@@ -21,15 +21,15 @@
 		  </div>
 		</div>
 		<div class="card clearfix" ng-repeat="match in match" ng-class="{hide: !finished({{match.finished}})}">
-		  <div class="item item-text-wrap div_match finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show: show}">
+		  <div class="item item-text-wrap div_match finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show_finish: show}">
 		  	<div class="row div_match" ng-class="{div_match_active: show}">
 		  		<span class="col col-40 center">{{match.team1.name}}</span>
 		  		<span class="col col-20 center">VS</span>
 		  		<span class="col col-40 center">{{match.team2.name}}</span>
 		  	</div>		
 		  	<div class="row">
-		  		<span class="col col-50 center">Score : {{match.team1.score}}</span>
-		  		<span class="col col-50 center">Score : {{match.team2.score}}</span>
+		  		<span class="col col-50 center">Score : 150</span>
+		  		<span class="col col-50 center">Score : 200</span>
 		  	</div>		
 		  	<div class="row">
 		  		<span class="col col-50 center">Arbitre : {{match.team1.arbiter.first_name}}</span>
