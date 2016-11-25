@@ -1,9 +1,0 @@
-<ion-view view-title="Acceuil">
-	<ion-pane class="m_content">
-		<button class="button button-full button-positive m_button" ui-sref="match" on-swipe-left="onSwipeleft()">Match</button>
-		<button class="button button-full button-positive m_button" ui-sref="scores">Scores</button>
-		<button class="button button-full button-positive m_button" ui-sref="mission">Feuille des Missions</button>
-		<button ng-if="!team" class="button button-full button-positive m_button" ui-sref="profile">Profile</button>
-		<button ng-if="team" class="button button-full button-positive m_button" ui-sref="team({ id: id})">Profile Team</button>
-	</ion-pane>
-</ion-view>
