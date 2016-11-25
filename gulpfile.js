@@ -6,29 +6,93 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var browserify      = require('browserify'),
+    notify          = require('gulp-notify'),
+    source          = require('vinyl-source-stream');
+var del         = require('del');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  build:          './www/',
+  buildAssets:    './www/assets/',
+  src:    './src/**/*.*',
+  sass: ['./src/scss/**/*.scss'],
+  lib: ['./src/lib/**/*.*'],
+  images: ['./src/img/*.*'],
+  scriptsEntry:   ['./src/js/app.js'], 
+  scripts:        ['./src/js/*'], 
+  json:        ['./src/**/*.json'],  
+  template: ['./src/**/*.html']
 };
 
-gulp.task('default', ['sass']);
+/**
+ * Clean build directory (www)
+ */
+gulp.task('clean', function(cb) {
+  del(paths.build, cb);
+});
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+gulp.task('default', ['sass', 'images', 'lib', 'json', 'views', 'scripts']);
+
+gulp.task('sass', function() {
+  return gulp
+    .src(paths.sass)
     .pipe(sass())
     .on('error', sass.logError)
-    .pipe(gulp.dest('./www/css/'))
+    .pipe(gulp.dest(paths.buildAssets + 'css'))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+    .pipe(gulp.dest(paths.buildAssets + 'css'))
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+// images
+gulp.task('images', function() {
+    return gulp
+        .src(paths.images)
+        .pipe(gulp.dest(paths.buildAssets + 'img'))
 });
+
+// Librairie ionic PAS TOUCHER
+gulp.task('lib', function() {
+    return gulp
+        .src(paths.lib)
+        .pipe(gulp.dest(paths.buildAssets + 'lib'))
+});
+
+// JSON PARTIE DEV A SUPPR APRES
+gulp.task('json', function() {
+    return gulp
+        .src(paths.json)
+        .pipe(gulp.dest(paths.build))
+});
+
+// Template
+gulp.task('views', function() {
+    return gulp
+        .src(paths.template)
+        .pipe(gulp.dest(paths.build))
+});
+
+// Script
+gulp.task('scripts', function() {
+    return browserify(paths.scriptsEntry)
+        .bundle()
+        .on('error', notify.onError({
+            message: "<%= error.message %>",
+            title: "JS Error"
+        }))
+        .pipe(source('app.js'))
+        .pipe(gulp.dest(paths.build));
+});
+  /**
+ * Watch task for development
+ */
+
+gulp.task('watch', function () {
+  gulp.watch(paths.src, ['default']);
+});
+
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()

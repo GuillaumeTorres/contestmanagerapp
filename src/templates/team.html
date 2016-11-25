@@ -1,0 +1,20 @@
+<ion-view view-title="Team">
+	<ion-content>
+		<div class="list text-wrap">
+			<div>
+				<span class="item center item-divider">Team</span>
+			</div>
+			<div>
+				<span class="item">Nom team : {{team.name}}</span>
+			</div>
+			<div>
+				<span class="item">Arbitre de la team : {{team.arbiter.first_name}}</span>
+			</div>
+			<div ng-repeat="user in team.user">
+				<span class="item center item-divider" ng-click="show=!show">User {{$index+1}}</span>
+				<span class="item" ng-show="show">Prenom : {{user.first_name}}</span>
+				<span class="item" ng-show="show">Nom : {{user.last_name}}</span>
+			</div>
+		</div>	
+	</ion-content>
+</ion-view>

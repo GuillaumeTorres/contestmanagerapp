@@ -1,0 +1,44 @@
+<ion-view view-title="Profile">
+	<ion-content>
+	<div ng-if="role == 0" class="list">
+		<span class="item center item-divider">Admin</span>
+		<span class="item">Username : {{user.username}}</span>
+		<span class="item">e-mail : {{user.email}}</span>
+		<span class="item">Prénom : {{user.first_name}}</span>
+		<span class="item">Nom : {{user.last_name}}</span>
+	</div>
+	<div ng-if="role == 1" class="list">
+		<span class="item center item-divider">Enseignant</span>
+		<span class="item">Username : {{user.username}}</span>
+		<span class="item">e-mail : {{user.email}}</span>
+		<span class="item">Prénom : {{user.first_name}}</span>
+		<span class="item">Nom : {{user.last_name}}</span>
+	</div>
+	<div ng-if="role == 2" class="list">
+		<div class="item center item-divider">
+			<span>Team</span>
+		</div>
+		<div class="item">
+			<span>Username : {{user.username}}</span>
+		</div>
+		<div class="item">
+			<span>Prénom : {{user.first_name}}</span>
+		</div>
+		<div class="item">
+			<span>Nom : {{user.last_name}}</span>
+		</div>
+		<div class="item">
+			<span>e-mail : {{user.email}}</span>
+		</div>
+		<div class="item">
+			<span>Ma team : {{user.team.name}}</span>
+			<button class="button-clear btn-infos" ui-sref='team({ id: user.team.id})'>Infos</button>
+		</div>
+		
+		
+		
+		
+		
+	</div>
+	</ion-content>
+</ion-view>

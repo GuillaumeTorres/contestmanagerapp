@@ -1,0 +1,11 @@
+/* Empty. Add your own CSS if you like */
+.clearfix {
+  overflow: auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.show_finish {
+  height: 190px !important; }
