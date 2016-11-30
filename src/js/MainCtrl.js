@@ -5,36 +5,31 @@ module.exports = angular.module('myApp.home', [])
 .controller('MainCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicSideMenuDelegate) {
 
   var user = JSON.parse(window.localStorage.getItem('user'));
-  console.log('user :');
-  console.log(user);
-  var name = user.first_name;  
+  var type = JSON.parse(window.localStorage.getItem('type'));
   var id = '';  
 
-
-  if(user.type == 3){
-
+  console.log('type : ');
+  console.log(type);
+  if(type == 3) {
+    $scope.team = true;
     var id_team = user.id_team;
-  console.log('id_team : ' + id_team);
-    $http.get("team.json")                                            
-    .success(function(data, status, headers, config) {
-        var donnees = data;
-        console.log('donnees');
-        console.log(donnees);
-        var i = 0;
-        while(donnees[i] != undefined){
-          if(id_team == donnees[i].id) {
-            console.log('Nom Team : ');
-            console.log(donnees[i].name);
-            name = donnees[i].name;
-            $scope.nom = name;    
-          }
-          i++;      
-        }                 
-     });
+    $scope.id = id_team;
+    console.log('id_team : ' + id_team);
+    console.log('Nom Team : ');
+    console.log(user.name);
+    name = user.name;
+    $scope.nom = name; 
 
+  }else{
+    var name = user.first_name;  
+    $scope.nom = name;
+    $scope.team = false;
+  } 
+  console.log($scope.team)
+
+  if(type == 3){
   }
-  else{
-    $scope.nom = name;   
+  else{   
   }
 
 

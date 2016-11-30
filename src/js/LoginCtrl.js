@@ -14,11 +14,9 @@ module.exports = angular.module('myApp.connection', [])
 
     $scope.login = function() {
 
-        $http({
-          method: 'GET',
-          url: 'users.json'
-        }).then(function successCallback(response) {
-            var donnees = response.data;
+        $http.get("users.json")                                            
+        .success(function(data, status, headers, config){
+            var donnees = data;
             var i = 0;
             var co = false;
             var goHome = true;
@@ -31,6 +29,7 @@ module.exports = angular.module('myApp.connection', [])
                     user.push(donnees[i]);
                     user = user[0];
                     delete user.password;
+                    window.localStorage.removeItem('user');
                     window.localStorage.setItem( 'user', JSON.stringify(donnees[i]));
                 }
                 i++;
@@ -46,17 +45,17 @@ module.exports = angular.module('myApp.connection', [])
                 if(type == 1){
                     $scope.team = false;
                     $scope.id = id;
+                    window.localStorage.setItem( 'type', 1);
                 }
                 else if(type == 2){
                     $scope.team = false;
                     $scope.id = id;
+                    window.localStorage.setItem( 'type', 2);
                 }
                 else if(type == 3) {
                     $scope.team = true;
                     $scope.id = user.id_team;
-                }else if(type == 4){
-                    $scope.team = false;
-                    $scope.id = id;
+                    window.localStorage.setItem( 'type', 1);
                 }
                 else{
                     goHome = false;
@@ -75,10 +74,5 @@ module.exports = angular.module('myApp.connection', [])
                 });
             }
         }); 
-    } 
-
-    $scope.arbitre = function(test) {
-        console.log('Arbitre Co');
-        $state.go('arbitre.main');
     } 
 })

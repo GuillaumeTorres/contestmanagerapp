@@ -20,6 +20,8 @@ angular.module('myApp', [
       require('./MainCtrl.js').name,
       require('./ArbitreCtrl.js').name,
       require('./HomeArbitreCtrl.js').name,
+      require('./SearchTeamCtrl.js').name,
+      require('./ChooseUserCtrl.js').name,
 
       ])
 
@@ -65,23 +67,23 @@ angular.module('myApp', [
             $urlRouterProvider.otherwise('/');
 
             $stateProvider
-                .state('login', {
+                .state('chooseUser', {
                     url: '/',
+                    views: {
+                        'content': {
+                            templateUrl: 'templates/chooseUser.html',
+                            controller: 'ChooseUserCtrl',
+                            controllerAs: 'chooseUser'
+                        }
+                    }
+                })
+                .state('login', {
+                    url: '/login',
                     views: {
                         'content': {
                             templateUrl: 'templates/login.html',
                             controller: 'LoginCtrl',
                             controllerAs: 'connection'
-                        }
-                    }
-                })
-                .state('home', {
-                    abstract: true,
-                    views: {
-                        'content': {
-                            templateUrl: 'templates/home.html',
-                            controller: 'HomeCtrl',
-                            controllerAs: 'main'
                         }
                     }
                 })
@@ -100,6 +102,22 @@ angular.module('myApp', [
                     templateUrl: 'templates/arbitre.html',
                     controller: 'ArbitreCtrl',
                     controllerAs: 'arbitre'
+                })
+                .state('arbitre.searchTeam', {
+                    url: '/searchTeam',
+                    templateUrl: 'templates/searchTeam.html',
+                    controller: 'SearchTeamCtrl',
+                    controllerAs: 'searchTeam'
+                })
+                .state('home', {
+                    abstract: true,
+                    views: {
+                        'content': {
+                            templateUrl: 'templates/home.html',
+                            controller: 'HomeCtrl',
+                            controllerAs: 'main'
+                        }
+                    }
                 })
                 .state('home.main', {
                     url: '/home',

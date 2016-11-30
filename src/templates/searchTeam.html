@@ -1,7 +1,7 @@
-<ion-view view-title="Feuille des Missions">
+<ion-view view-title="Rechercher une Team">
 	<ion-content>
-	<div class="cardTeam" ng-repeat="team in card" ng-show="show" ng-click="selectTeam()">
-		<p>test</p>
+	<div class="cardTeam" ng-repeat="team in card" ng-show="show" ng-click="selectTeam(team)">
+		<p>{{team.name}}</p>
 	</div>
 	</ion-content>
 	<div class="loader" ng-show="!show">

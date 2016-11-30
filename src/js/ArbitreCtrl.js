@@ -15,5 +15,9 @@ module.exports = angular.module('myApp.arbitre', [])
         $scope.card = donnees;  
 		$scope.show = true;            
      });
+
+    $scope.selectTeam = function () {
+        console.log('ouiiiiiiiiiiiiiii');        
+    }
 		
 })

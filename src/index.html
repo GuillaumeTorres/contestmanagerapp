@@ -19,6 +19,12 @@
     <script src="app.js"></script>
   </head>
   <body ng-app="myApp">
-  <div ui-view="content"></div>
+    <div ui-view="content"></div>
+
+    <div class="footer">
+      <button class="btnFooter" ui-sref="login">Login</button>
+      <button class="btnFooter" ui-sref="home.main">Home</button>
+      <button class="btnFooter" ui-sref="chooseUser">ChooseUser</button>
+    </div>
   </body>
 </html>
