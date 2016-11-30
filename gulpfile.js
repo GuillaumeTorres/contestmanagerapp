@@ -89,7 +89,7 @@ gulp.task('scripts', function() {
  * Watch task for development
  */
 
-gulp.task('watch', function () {
+gulp.task('watch', ['sass', 'images', 'lib', 'json', 'views', 'scripts'], function () {
   gulp.watch(paths.src, ['default']);
 });
 

@@ -6,7 +6,7 @@ module.exports = angular.module('myApp.connection', [])
 
 
 
-.controller('LoginCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams) {
+.controller('LoginCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicPopup) {
 
     $scope.menu = false;
     $scope.data = {};
@@ -20,13 +20,14 @@ module.exports = angular.module('myApp.connection', [])
         }).then(function successCallback(response) {
             var donnees = response.data;
             var i = 0;
+            var co = false;
             var goHome = true;
             var user = [];
             var username = $scope.data.username;
             var password = $scope.data.password;
             while(donnees[i] != undefined){
                 if(username == donnees[i].username && password == donnees[i].password) {
-                    var co = true;
+                    co = true;
                     user.push(donnees[i]);
                     user = user[0];
                     delete user.password;
@@ -74,5 +75,10 @@ module.exports = angular.module('myApp.connection', [])
                 });
             }
         }); 
+    } 
+
+    $scope.arbitre = function(test) {
+        console.log('Arbitre Co');
+        $state.go('arbitre.main');
     } 
 })

@@ -18,6 +18,8 @@ angular.module('myApp', [
       require('./LoginCtrl.js').name,
       require('./TeamCtrl.js').name,
       require('./MainCtrl.js').name,
+      require('./ArbitreCtrl.js').name,
+      require('./HomeArbitreCtrl.js').name,
 
       ])
 
@@ -57,7 +59,6 @@ angular.module('myApp', [
   }
 })
 
-
 .config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
             // For any unmatched url, send to /
@@ -84,6 +85,22 @@ angular.module('myApp', [
                         }
                     }
                 })
+                .state('arbitre', {
+                    abstract: true,
+                    views: {
+                        'content': {
+                            templateUrl: 'templates/homeArbitre.html',
+                            controller: 'HomeArbitreCtrl',
+                            controllerAs: 'homeArbitre'
+                        }
+                    }
+                })
+                .state('arbitre.main', {
+                    url: '/arbitre',
+                    templateUrl: 'templates/arbitre.html',
+                    controller: 'ArbitreCtrl',
+                    controllerAs: 'arbitre'
+                })
                 .state('home.main', {
                     url: '/home',
                     templateUrl: 'templates/main.html',
@@ -109,7 +126,7 @@ angular.module('myApp', [
                     controllerAs: 'profil'
                 })
                 .state('home.mission', {
-                    url: '/mission',
+                    url: '/mission/',
                     templateUrl: 'templates/mission.html',
                     controller: 'MissionCtrl',
                     controllerAs: 'mission'
