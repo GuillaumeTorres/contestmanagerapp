@@ -2,24 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>myApp</title>
+    <title></title>
 
-    <!-- css -->
-    <link href="assets/css/app.css" rel="stylesheet">
 
-  </head>
+    <!-- compiled css output -->
+    <link href="assets/css/ionic.app.css" rel="stylesheet">
 
-  <body>
-
-    <div ui-view="content" class="side-menu-right effect-slide-in" side-menu></div>
+    <!-- ionic/angularjs js -->
+    <script src="assets/lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script type="text/javascript" src="cordova.js" ></script>
+    <script src="cordova.js"></script>
 
-    <!-- app js -->
-    <script type="text/javascript" src="app.js" ></script>
-    <script type="text/javascript" src="cordovaInit.js" ></script>
+    <!-- your app's js -->
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="myApp">
+    <div ui-view="content"></div>
+
+    <div class="footer">
+      <button class="btnFooter" ui-sref="login">Login</button>
+      <button class="btnFooter" ui-sref="home.main">Home</button>
+      <button class="btnFooter" ui-sref="chooseUser">ChooseUser</button>
+    </div>
   </body>
 </html>

@@ -1,0 +1,12 @@
+<ion-view view-title="Acceuil">
+  <ion-pane class="m_content">
+    <div class="bonjour">
+      <p>Bonjour {{nom}}</p>
+    </div>
+    <button class="button button-full button-positive m_button" ui-sref="home.match" on-swipe-left="onSwipeleft()">Match</button>
+    <button class="button button-full button-positive m_button" ui-sref="home.scores">Scores</button>
+    <button class="button button-full button-positive m_button" ui-sref="home.mission">Feuille des Missions</button>
+    <button ng-if="!team" class="button button-full button-positive m_button" ui-sref="home.profil">Profile</button>
+    <button ng-if="team" class="button button-full button-positive m_button" ui-sref="home.team({ id: id})">Profile Team</button>
+  </ion-pane>
+</ion-view>
