@@ -12,6 +12,10 @@ module.exports = angular.module('myApp.connection', [])
     $scope.data = {};
     $scope.lol = false;
 
+        var isArbitre = window.localStorage.getItem('isArbitre');
+
+        console.log('isArbitre : ');
+        console.log(isArbitre);
     $scope.login = function() {
 
         $http.get("users.json")                                            

@@ -22,6 +22,7 @@ angular.module('myApp', [
       require('./HomeArbitreCtrl.js').name,
       require('./SearchTeamCtrl.js').name,
       require('./ChooseUserCtrl.js').name,
+      require('./MissionArbitreCtrl.js').name,
 
       ])
 
@@ -102,6 +103,12 @@ angular.module('myApp', [
                     templateUrl: 'templates/arbitre.html',
                     controller: 'ArbitreCtrl',
                     controllerAs: 'arbitre'
+                })
+                .state('arbitre.mission', {
+                    url: '/arbitre/mission',
+                    templateUrl: 'templates/missionArbitre.html',
+                    controller: 'MissionArbitreCtrl',
+                    controllerAs: 'missionArbitres'
                 })
                 .state('arbitre.searchTeam', {
                     url: '/searchTeam',

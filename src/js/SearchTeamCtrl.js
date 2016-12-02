@@ -20,10 +20,16 @@ module.exports = angular.module('myApp.searchTeam', [])
         console.log('team : ');
         console.log(team);
         var type = 3;
-        window.localStorage.removeItem('user');
-        window.localStorage.setItem( 'user', JSON.stringify(team));
-        window.localStorage.setItem( 'type', 3);
+        var team = team;
+        window.localStorage.removeItem('team');
+        window.localStorage.setItem( 'team', JSON.stringify(team));
+        window.localStorage.removeItem('type');
+        window.localStorage.setItem( 'type', type);
         $state.go('home.main');
     }
         
+        var isArbitre = window.localStorage.getItem('isArbitre');
+
+        console.log('isArbitre : ');
+        console.log(isArbitre);
 })
