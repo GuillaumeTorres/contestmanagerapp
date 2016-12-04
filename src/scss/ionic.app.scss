@@ -24,6 +24,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 /* Empty. Add your own CSS if you like */
 
+
+
 p {
 	margin: 0;
 }
@@ -175,4 +177,29 @@ p {
         line-height: 10px;
     }
 
+}
+
+.cardMission {
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    height: auto;
+    min-height: 50px;
+    margin-top: 20px;
+
+    .title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .boolMission {
+        position: absolute;
+        top: 0;
+        right: 15px;
+    }
+
+    .relative {
+        position: relative;
+        height: 50px;
+    }
 }
