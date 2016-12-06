@@ -4,36 +4,24 @@
 			<div class="title">
 				<p>Mission 1</p>
 			</div>
-			<div class="relative">
-				<label disabled checked="false">Tablette dans les sarcophage</label>
-      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-model="test" value="on"><div class="track"><div class="handle"></div></div></label>
+			<div id="mission1" class="relative">
+				<div id="firstGroupe" class="relative divMissionBool">
+					<label disabled checked="false">Tablette dans les sarcophage</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-model="test" value="on"><div class="track"><div class="handle"></div></div></label>
+				</div>
+
+				<div id="secondGroup" class="relative divMissionRadio">
+					<ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio>
+					<ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
+					<ion-radio ng-model="choice" ng-value="'C'">Choose C</ion-radio>	
+					<ion-radio ng-model="choice" ng-value="'D'">Choose D</ion-radio>	
+				</div>
+
+				
+      			<br>
       			test : {{test}}
-			</div>
-			
-			<div class="relative">
-				<ion-list radio-group>
-				  <ion-list-header>
-				    Language
-				  </ion-list-header>
-
-				  <ion-item>
-				    <ion-label>Go</ion-label>
-				    <ion-radio checked="true" value="go"></ion-radio>
-				  </ion-item>
-
-				  <ion-item>
-				    <ion-label>Rust</ion-label>
-				    <ion-radio value="rust"></ion-radio>
-				  </ion-item>
-
-				  <ion-item>
-				    <ion-label>Python</ion-label>
-				    <ion-radio value="python" disabled="true"></ion-radio>
-				  </ion-item>
-				</ion-list>
-
-
-    			<ion-toggle value="test" disabled="true"></ion-toggle>
+      			<br>
+      			choice : {{choice}}
 			</div>
 			<hr>
 		</div>
