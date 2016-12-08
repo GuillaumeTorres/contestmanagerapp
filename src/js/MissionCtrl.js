@@ -5,26 +5,43 @@ module.exports = angular.module('myApp.mission', [])
 
 .controller('MissionCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams) {
 
+	var data = {
+			score: 0,
+		    scoreM2m1: 0,
+		    scoreM1: 0,
+		    scoreM2: 0,
+		    scoreM3: 0,
+		    scoreM4: 0,
+		    scoreM5: 0,
+		    scoreM6: 0,
+		    boolM1: 0,
+		    scoreM2Check: 0,
+		    range: 4
 
-	var score = 0;
-	var scoreM1 = 0;
-	var scoreM2 = 0;
-	var scoreM3 = 0;
-	var scoreM4 = 0;
-	var scoreM5 = 0;
-	var scoreM6 = 0;
-	var boolM1 = 0;
-	var scoreM2Check = 0;
+		}
+	$scope.data = {
+		score: 0,
+	    scoreM2m1: 0,
+	    scoreM1: 0,
+	    scoreM2: 0,
+	    scoreM3: 0,
+	    scoreM4: 0,
+	    scoreM5: 0,
+	    scoreM6: 0,
+	    boolM1: 0,
+	    scoreM2Check: 0,
+	    range: 4
+	}
 
 	console.log('MissionCtrl :)');	
 	console.log('boolM1 : ');
 
 	$scope.boolM1Click = function(bool) {
 		console.log('bool : ' + bool);
-		if(bool) boolM1 = 20;
-		else boolM1 = 0;
+		if(bool) data.boolM1 = 20;
+		else data.boolM1 = 0;
 
-		$scope.scoreM1m1 = boolM1;
+		$scope.data.scoreM1m1 = data.boolM1;
 	}
 
 	$scope.checkM2Click = function(check1, check2, check3, check4, check5) {
@@ -45,22 +62,37 @@ module.exports = angular.module('myApp.mission', [])
 		if(check4) scoreCheck4 = 50;
 		if(check5) scoreCheck5 = 60;
 
-		$scope.scoreM2 = scoreCheck1 + scoreCheck2 + scoreCheck3 + scoreCheck4 + scoreCheck5;
+		$scope.data.scoreM2 = scoreCheck1 + scoreCheck2 + scoreCheck3 + scoreCheck4 + scoreCheck5;
 	} 
+
 
 	$scope.rangeMission2 = function() {
     	console.log('range value has changed');
+    	var range1 = $scope.data.scoreM2m1;
+    	var range2 = $scope.data.scoreM2m2;
+    	var range3 = $scope.data.scoreM2m3;
+    	var range4 = $scope.data.scoreM2m4;
+    	var range5 = $scope.data.scoreM2m5;
+    	console.log('range1 : ');
+    	console.log(range1);
+    	console.log('range2 : ');
+    	console.log(range2);
+    	console.log('range3 : ');
+    	console.log(range3);
+    	console.log('range4 : ');
+    	console.log(range4);
+    	console.log('range5 : ');
+    	console.log(range5);
   	}
   
 
-	$scope.score = score;
-	$scope.scoreM1m1 = scoreM1;
-	$scope.choice = scoreM1;
-	$scope.scoreM2 = scoreM2;
-	$scope.scoreM2m1 = score;
-	$scope.scoreM2m2 = score;
-	$scope.scoreM2m3 = score;
-	$scope.scoreM2m4 = score;
-	$scope.scoreM2m5 = score;
-	$scope.test = score;
+	$scope.data.score = 0;
+	$scope.data.scoreM1m1 = 0;
+	$scope.data.choice = 0;
+	$scope.data.scoreM2 = 0;
+	$scope.data.scoreM2m2 = 0;
+	$scope.data.scoreM2m3 = 0;
+	$scope.data.scoreM2m4 = 0;
+	$scope.data.scoreM2m5 = 0;
+	$scope.data.test = 0;
 })
