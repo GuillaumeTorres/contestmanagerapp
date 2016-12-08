@@ -24,10 +24,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 /* Empty. Add your own CSS if you like */
 
-
-
 p {
 	margin: 0;
+    font-size: 16px;
 }
 
 .m_content {
@@ -179,46 +178,77 @@ p {
 
 }
 
+.scoreTotal {
+    text-align: center;
+    font-size: 5vW;
+    padding: 10px;
+
+    span {  
+        font-size: 15px;
+        vertical-align: top;
+    }
+}
+
 .cardMission {
     position: relative;
     width: 100%;
     padding: 5px;
     height: auto;
     min-height: 50px;
-    margin-top: 20px;
+    margin: 20px auto;
 
     .title {
         width: 100%;
         text-align: center;
+
+        .scoreMission{
+            position: absolute;
+            top: 4px;
+            right: 40px;
+            font-size: 20px;
+        }
     }
 
-    .boolMission {
-        position: absolute;
-        top: 0;
-        right: 15px;
-    }
+    .mission {
+        
+        border: 1px solid #ddd;
 
-    .relative {
-        position: relative;
-    }
-
-    .divMissionBool {
-        height: 45px;
-        margin: 5px 0;
-    }
-
-    .divMissionRadio {
-        height: auto;
-
-        .sousMission {
-            height: 50px;
+        .boolMission {
+            position: absolute;
+            top: 11px;
+            right: 15px;
         }
 
-        .sousMissionRadio {
-            line-height: 50px;
+        .relative {
             position: relative;
-            margin: 5px 0;
         }
+
+        .divMission{
+
+            .divLabelM2 {
+                position: relative;
+
+                .scoreM2 {
+                    position: absolute;
+                    right: 20px;
+                }
+            }
+        }
+
+        .divMissionRadio {
+            height: auto;
+
+            .sousMission {
+                height: 50px;
+            }
+
+            .sousMissionRadio {
+                line-height: 50px;
+                position: relative;
+                margin: 5px 0;
+            }
+        }
+
     }
 }
 
@@ -242,4 +272,113 @@ p {
         width: 100%;
         font-size: 60px;
     }
+}
+
+.mesItem {
+    border-color: #ddd;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
+
+    label {
+        font-size: 16px;
+    }
+}
+
+
+/*Input Range*/
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px 0 0 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+  background: #3071A9;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 29px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -12px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #3071A9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+  background: #3071A9;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 29px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #3071A9;
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 4px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071A9;
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 4px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 29px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071A9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #3071A9;
 }

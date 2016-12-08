@@ -1,29 +1,118 @@
 <ion-view view-title="Feuille des Missions">
 	<ion-content>
+		<div class="scoreTotal">
+			Score : {{score = scoreM1 + scoreM2}}
+		</div>
 		<div class="cardMission">
 			<div class="title">
 				<p>Mission 1</p>
+				<p class="scoreMission" ng-model="scoreM1"><span>Socre : </span>{{scoreM1 = scoreM1m1 + choice}}</p>
 			</div>
-			<div id="mission1" class="relative">
-				<div id="firstGroupe" class="relative divMissionBool">
+			<div id="mission1" class=" mission relative">
+				<div id="firstGroupeM&" class="relative divMission item">
 					<label disabled checked="false">Tablette dans les sarcophage</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-model="test" value="on"><div class="track"><div class="handle"></div></div></label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(boolM1)" ng-model="boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
 				</div>
 
-				<div id="secondGroup" class="relative divMissionRadio">
-					<ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio>
-					<ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
-					<ion-radio ng-model="choice" ng-value="'C'">Choose C</ion-radio>	
-					<ion-radio ng-model="choice" ng-value="'D'">Choose D</ion-radio>	
+				<div id="secondGroupM1" class="relative divMissionRadio">
+					<ion-radio ng-model="choice" ng-value="20">La momie est assise sur son trône et se trouve dans le sarcophage</ion-radio>
+					<ion-radio ng-model="choice" ng-value="50">La momie et son trône se trouvent dans la loge du gardien</ion-radio>
+					<ion-radio ng-model="choice" ng-value="80">La momie se trouve allongée sans son trône dans le sarcophage</ion-radio>	
+					<ion-radio ng-model="choice" ng-value="0">Autre</ion-radio>	
 				</div>
 
 				
       			<br>
-      			test : {{test}}
+      			boolM1 : {{boolM1}}
       			<br>
       			choice : {{choice}}
 			</div>
-			<hr>
 		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Mission 2</p>
+				<p class="scoreMission" ng-model="scoreM2"><span>Socre : </span>{{scoreM2}}</p>
+			</div>
+			<div id="mission2" class="mission relative">
+				<div id="firstGroupeM2" class="relative divMission">
+					<div class="mesItem">
+						<div class="divLabelM2">
+							<label>Tablette dans les sarcophage {{scoreM2m1}} / {{scoreM2m2 * 1 + scoreM2m3 * 1 + scoreM2m4 * 1 + scoreM2m5 * 1}}</label>
+							<label class="scoreM2">Test : {{scoreM2m2 * 1 + scoreM2m3 * 1}}</label>
+						</div>
+						<input id="rangeM2m1" class="" type="range" min="0"  max="4" value="1" step="1" ng-model="scoreM2m1.rangeM2m1" ng-change="rangeMission2()">
+					</div>
+					<div class="mesItem">
+						<div class="divLabelM2">
+							<label>Tablette dans les sarcophage</label>
+							<label class="scoreM2">Test : {{scoreM2m2 }}</label>
+						</div>
+						<input id="rangeM2m2" class="" type="range" min="0"  max="4" value="2" step="1" ng-model="scoreM2m2.rangeM2m2" ng-change="rangeMission2()">
+					</div>
+					<div class="mesItem">
+						<div class="divLabelM2">
+							<label>Tablette dans les sarcophage</label>
+							<label class="scoreM2">Test : {{scoreM2m3}}</label>
+						</div>
+						<input id="rangeM2m3" class="" type="range" min="0"  max="4" value="10" step="1" ng-model="scoreM2m3.rangeM2m3" ng-change="rangeMission2()">
+					</div>
+					<div class="mesItem">
+						<div class="divLabelM2">
+							<label>Tablette dans les sarcophage</label>
+							<label class="scoreM2">Test : {{scoreM2m4}}</label>
+						</div>
+						<input id="rangeM2m4" class="" type="range" min="0"  max="4" value="15" step="1" ng-model="scoreM2m4.rangeM2m4" ng-change="rangeMission2()">
+					</div>
+					<div class="mesItem">
+						<div class="divLabelM2">
+							<label>Tablette dans les sarcophage</label>
+							<label class="scoreM2">Test : {{scoreM2m5}}</label>
+						</div>
+						<input id="rangeM2m5" class="" type="range" min="0"  max="4" value="25" step="1" ng-model="scoreM2m5.rangeM2m5" ng-change="rangeMission2()">
+					</div>
+				</div>
+      			<br>
+      			<br>
+      			choice : {{choice}}
+			</div>
+		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Mission 3</p>
+				<p class="scoreMission" ng-model="scoreM1"><span>Socre : </span>{{scoreM3}}</p>
+			</div>
+			<div id="mission3" class="relative">
+				<div id="firstGroupeM3" class="relative divMission">
+					<ion-checkbox ng-model="e">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-model="r">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-model="t">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-model="u">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-model="i">Checkbox Label</ion-checkbox>
+				</div>
+      			<br>
+      			choice : {{choice}}
+			</div>
+		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Mission 4</p>
+				<p class="scoreMission" ng-model="scoreM1"><span>Socre : </span>{{scoreM4}}</p>
+			</div>
+			<div id="mission4" class="relative">
+				<div id="firstGroupeM4" class="relative divMission">
+					<ion-checkbox ng-click="checkM2Click(chackM2C1, chackM2C2, chackM2C3, chackM2C4, chackM2C5)" ng-model="d">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-click="checkM2Click(chackM2C1, chackM2C2, chackM2C3, chackM2C4, chackM2C5)" ng-model="s">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-click="checkM2Click(chackM2C1, chackM2C2, chackM2C3, chackM2C4, chackM2C5)" ng-model="g">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-click="checkM2Click(chackM2C1, chackM2C2, chackM2C3, chackM2C4, chackM2C5)" ng-model="j">Checkbox Label</ion-checkbox>
+					<ion-checkbox ng-click="checkM2Click(chackM2C1, chackM2C2, chackM2C3, chackM2C4, chackM2C5)" ng-model="l">Checkbox Label</ion-checkbox>
+				</div>
+      			<br>
+      			choice : {{choice}}
+			</div>
+		</div>
+		<hr>
 	</ion-content>
 </ion-view>
