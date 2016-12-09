@@ -179,6 +179,11 @@ p {
 }
 
 .scoreTotal {
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    z-index: 99;
+    background-color: white;
     text-align: center;
     font-size: 5vW;
     padding: 10px;
@@ -250,6 +255,10 @@ p {
         }
 
     }
+}
+
+.margHeaderMission {
+    top: 60px;
 }
 
 

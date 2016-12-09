@@ -16,9 +16,10 @@ module.exports = angular.module('myApp.mission', [])
 		    scoreM6: 0,
 		    boolM1: 0,
 		    scoreM2Check: 0,
-		    range: 4
-
+			rangeM3 : 10,
+			penalite: 15
 		}
+
 	$scope.data = {
 		score: 0,
 	    scoreM2m1: 0,
@@ -30,11 +31,46 @@ module.exports = angular.module('myApp.mission', [])
 	    scoreM6: 0,
 	    boolM1: 0,
 	    scoreM2Check: 0,
-	    range: 4
+	    scoreM2m1: 0,
+	    scoreM2m2: 0,
+	    scoreM2m3: 0,
+	    scoreM2m4: 0,
+	    scoreM2m5: 0,
+	    range1: 4,
+		range2: 4,
+		range3: 4,
+		range4: 4,
+		range5: 4,
+		multiM2m1: 0,
+		multiM2m2: 0,
+		multiM2m3: 0,
+		multiM2m4: 0,
+		multiM2m5: 0,
+		penalite: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		rangeM3: 10,
+		range1M3m1 : 0,
+		range1M3m2 : 0,
+		range1M3m3 : 0,
+		range2M3m1 : 0,
+		range2M3m2 : 0,
+		range2M3m3 : 0,
+		range2M3m4 : 0,
+		score1M3m1 : 0,
+		score1M3m2 : 0,
+		score1M3m3 : 0,
+		score2M3m1 : 0,
+		score2M3m2 : 0,
+		score2M3m3 : 0,
+		score2M3m4 : 0
+	}
+
+	$scope.getArray = function(num) {
+	    return new Array(num);   
 	}
 
 	console.log('MissionCtrl :)');	
 	console.log('boolM1 : ');
+	console.log(data.penalite);
 
 	$scope.boolM1Click = function(bool) {
 		console.log('bool : ' + bool);
@@ -68,31 +104,77 @@ module.exports = angular.module('myApp.mission', [])
 
 	$scope.rangeMission2 = function() {
     	console.log('range value has changed');
-    	var range1 = $scope.data.scoreM2m1;
-    	var range2 = $scope.data.scoreM2m2;
-    	var range3 = $scope.data.scoreM2m3;
-    	var range4 = $scope.data.scoreM2m4;
-    	var range5 = $scope.data.scoreM2m5;
-    	console.log('range1 : ');
-    	console.log(range1);
-    	console.log('range2 : ');
-    	console.log(range2);
-    	console.log('range3 : ');
-    	console.log(range3);
-    	console.log('range4 : ');
-    	console.log(range4);
-    	console.log('range5 : ');
-    	console.log(range5);
-  	}
-  
+    	var range1 = parseInt($scope.data.multiM2m1);
+    	var range2 = parseInt($scope.data.multiM2m2);
+    	var range3 = parseInt($scope.data.multiM2m3);
+    	var range4 = parseInt($scope.data.multiM2m4);
+    	var range5 = parseInt($scope.data.multiM2m5);
 
-	$scope.data.score = 0;
-	$scope.data.scoreM1m1 = 0;
-	$scope.data.choice = 0;
-	$scope.data.scoreM2 = 0;
-	$scope.data.scoreM2m2 = 0;
-	$scope.data.scoreM2m3 = 0;
-	$scope.data.scoreM2m4 = 0;
-	$scope.data.scoreM2m5 = 0;
-	$scope.data.test = 0;
+    	var nextRange1 = 4 - (range2 + range3 + range4 + range5);
+    	var nextRange2 = 4 - (range1 + range3 + range4 + range5);
+    	var nextRange3 = 4 - (range1 + range2 + range4 + range5);
+    	var nextRange4 = 4 - (range1 + range2 + range3 + range5);
+    	var nextRange5 = 4 - (range1 + range2 + range3 + range4);
+
+
+    	$scope.data.scoreM2m1 = 1 * range1;
+    	$scope.data.scoreM2m2 = 2 * range2;
+    	$scope.data.scoreM2m3 = 10 * range3;
+    	$scope.data.scoreM2m4 = 15 * range4;
+    	$scope.data.scoreM2m5 = 25 * range5;
+
+    	$scope.data.range1 = nextRange1;
+		$scope.data.range2 = nextRange2;
+		$scope.data.range3 = nextRange3;
+		$scope.data.range4 = nextRange4;
+		$scope.data.range5 = nextRange5;
+
+  	}
+
+
+	$scope.rangeMission3 = function(statut) {
+		if(statut){
+			console.log('True range change');
+			$scope.data.score2M3m1 = 5 * $scope.data.range2M3m1;
+	    	$scope.data.score2M3m2 = 6 * $scope.data.range2M3m2;
+	    	$scope.data.score2M3m3 = 8 * $scope.data.range2M3m3;
+	    	$scope.data.score2M3m4 = 10 * $scope.data.range2M3m4;
+	    	
+		}
+		else {
+			console.log('False range change');
+			$scope.data.score1M3m1 = 1 * $scope.data.range1M3m1;
+	    	$scope.data.score1M3m2 = 2 * $scope.data.range1M3m2;
+	    	$scope.data.score1M3m3 = 3 * $scope.data.range1M3m3;
+	    	
+		}
+  	}
+
+
+	$scope.penalite = function(penalite) {
+		$scope.data.rangeM3 = data.rangeM3 - penalite;
+  	}
+
+	$scope.resetM3 = function(penalite) {
+		$scope.data.score1M3m1 = 0;
+    	$scope.data.score1M3m2 = 0;
+    	$scope.data.score1M3m3 = 0;
+		$scope.data.score2M3m1 = 0;
+    	$scope.data.score2M3m2 = 0;
+    	$scope.data.score2M3m3 = 0;
+    	$scope.data.score2M3m4 = 0;
+		$scope.data.range2M3m1 = 0;
+    	$scope.data.range2M3m2 = 0;
+    	$scope.data.range2M3m3 = 0;
+		$scope.data.range2M3m4 = 0;
+    	$scope.data.range1M3m1 = 0;
+    	$scope.data.range1M3m2 = 0;
+    	$scope.data.range1M3m3 = 0;
+  	}
+
+
+
+
+
+ 
 })
