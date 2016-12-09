@@ -201,6 +201,11 @@ p {
     height: auto;
     min-height: 50px;
     margin: 20px auto;
+    
+    .divBool{
+      padding-right: 70px;
+    }
+    
 
     .title {
         width: 100%;
@@ -238,6 +243,11 @@ p {
                     right: 20px;
                 }
             }
+        }
+
+        .scoreM4 {
+          position: absolute;
+          right: 20px;
         }
 
         .divMissionRadio {

@@ -14,10 +14,13 @@ module.exports = angular.module('myApp.mission', [])
 		    scoreM4: 0,
 		    scoreM5: 0,
 		    scoreM6: 0,
+	    	bonus: 0,
 		    boolM1: 0,
 		    scoreM2Check: 0,
 			rangeM3 : 10,
-			penalite: 15
+			penalite: 15,
+			scoreM4T1: 0,
+			scoreM4T2: 0
 		}
 
 	$scope.data = {
@@ -29,6 +32,7 @@ module.exports = angular.module('myApp.mission', [])
 	    scoreM4: 0,
 	    scoreM5: 0,
 	    scoreM6: 0,
+	    bonus: 0,
 	    boolM1: 0,
 	    scoreM2Check: 0,
 	    scoreM2m1: 0,
@@ -61,7 +65,28 @@ module.exports = angular.module('myApp.mission', [])
 		score2M3m1 : 0,
 		score2M3m2 : 0,
 		score2M3m3 : 0,
-		score2M3m4 : 0
+		score2M3m4 : 0,
+		scoreM4T1: 0,
+		scoreM4T2: 0,
+		boolM4m1T1: false,
+		boolM4m2T1: false,
+		boolM4m3T1: false,
+		boolM4m1T2: false,
+		boolM4m2T2: false,
+		boolM4m3T2: false,
+		scoreM4T1m1: 0,
+		scoreM4T1m2: 0,
+		scoreM4T1m3: 0,
+		scoreM4T2m1: 0,
+		scoreM4T2m2: 0,
+		scoreM4T2m3: 0,
+		whereMusic: 0,
+		music: 0,
+		robot: 0,
+		boolM6: 0,
+		bonus1: 0,
+		bonus2: 0,
+		bonus3: 0
 	}
 
 	$scope.getArray = function(num) {
@@ -173,8 +198,106 @@ module.exports = angular.module('myApp.mission', [])
   	}
 
 
+  	$scope.boolM4Click = function(tableau) {
+  		
+  		if(tableau){
+  			// Tableau 1
+	  		console.log('Mission 4 T1');
+	  		var bool1 = $scope.data.boolM4m1T1;
+			var bool2 = $scope.data.boolM4m2T1;
+			var bool3 = $scope.data.boolM4m3T1;
 
 
+			if(bool1 && bool2){
+				$scope.data.scoreM4T1m1 = 30;
+				$scope.data.scoreM4T1m2 = 30;
+			}else{
+				if(bool1) $scope.data.scoreM4T1m1 = 10;
+				else $scope.data.scoreM4T1m1 = 0;
+				if(bool2) $scope.data.scoreM4T1m2 = 10;
+				else $scope.data.scoreM4T1m2 = 0;
+			}
+
+			if(bool3) $scope.data.scoreM4T1m3 = 40; 
+			else $scope.data.scoreM4T1m3 = 0; 
+  		}
+  		else{
+  			// Tableau 2
+  			console.log('Mission 4 T2');
+	  		var bool4 = $scope.data.boolM4m1T2;
+			var bool5 = $scope.data.boolM4m2T2;
+			var bool6 = $scope.data.boolM4m3T2;
+
+			if(bool4 && bool5){
+				$scope.data.scoreM4T2m1 = 30;
+				$scope.data.scoreM4T2m2 = 30;
+			}else{
+				if(bool4) $scope.data.scoreM4T2m1 = 10;
+				else $scope.data.scoreM4T2m1 = 0;
+				if(bool5) $scope.data.scoreM4T2m2 = 10;
+				else $scope.data.scoreM4T2m2 = 0;
+			}
+
+			if(bool6) $scope.data.scoreM4T2m3 = 40;
+			else $scope.data.scoreM4T2m3 = 0;
+  		}
+  	}
+
+
+  	$scope.radioM5 = function(tableau) {
+  		var whereMusic = $scope.data.whereMusic;
+  		var music = $scope.data.music;
+
+  		if(music == 1 && whereMusic == 1){
+  			$scope.data.scoreM5 = 30;
+  		}
+  		else if(music == 2 && whereMusic == 1){
+			$scope.data.scoreM5 = 60;
+  		}
+  		else if(music == 2 && whereMusic == 2){
+			$scope.data.scoreM5 = 50;
+  		}
+  		else if(music == 3 && whereMusic == 1){
+			$scope.data.scoreM5 = 100;
+  		}
+  		else if(music == 3 && whereMusic == 2){
+			$scope.data.scoreM5 = 80;
+  		}
+  		else{
+			$scope.data.scoreM5 = 0;
+  		}
+  	}
+
+  	$scope.radioM6 = function() {
+  		var robot = $scope.data.robot;
+
+  		if(robot == 1){
+  			$scope.data.scoreM6 = 50;
+  		}
+  		else if(robot == 2){
+  			if($scope.data.boolM6) $scope.data.scoreM6 = 100;
+  			else $scope.data.scoreM6 = 80;
+  		}else{
+			$scope.data.scoreM6 = 0;
+  		}
+  	}
+
+
+	$scope.boolBonus = function(bool) {
+		console.log('bonus : ');
+		var bonus1 = 30;
+		var bonus2 = 30;
+		var bonus3 = 40;
+
+		if($scope.data.boolBonus1) $scope.data.bonus1 = 30;
+		else $scope.data.bonus1 = 0;
+
+		if($scope.data.boolBonus2) $scope.data.bonus2 = 30;
+		else $scope.data.bonus2 = 0;
+
+		if($scope.data.boolBonus3) $scope.data.bonus3 = 40;
+		else $scope.data.bonus3 = 0;
+	}
 
  
 })

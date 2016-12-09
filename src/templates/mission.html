@@ -1,6 +1,6 @@
 <ion-view view-title="Feuille des Missions">
 	<div class="scoreTotal">
-		Score Total : {{data.score = data.scoreM1 + data.scoreM2 + data.scoreM3}}
+		Score Total : {{data.score = data.scoreM1 + data.scoreM2 + data.scoreM3 + data.scoreM4 + data.scoreM5 + data.scoreM6 + data.bonus}}
 	</div>
 	<ion-content class="margHeaderMission">
 		<div class="cardMission">
@@ -17,10 +17,10 @@
 		<div class="cardMission">
 			<div class="title">
 				<p>Mission 1</p>
-				<p class="scoreMission" ng-model="scoreM1"><span>Socre : </span>{{data.scoreM1 = data.scoreM1m1 + data.choice}}</p>
+				<p class="scoreMission" ng-model="data.scoreM1"><span>Socre : </span>{{data.scoreM1 = data.scoreM1m1 + data.choice}}</p>
 			</div>
 			<div id="mission1" class=" mission relative">
-				<div id="firstGroupeM1" class="relative divMission item">
+				<div id="firstGroupeM1" class="relative divMission item divBool">
 					<label disabled checked="false">Tablette dans les sarcophage</label>
 	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
 				</div>
@@ -37,7 +37,7 @@
 		<div class="cardMission">
 			<div class="title">
 				<p>Mission 2</p>
-				<p class="scoreMission" ng-model="scoreM2"><span>Socre : </span>{{data.scoreM2 = data.scoreM2m1 + data.scoreM2m2 + data.scoreM2m3 + data.scoreM2m4 + data.scoreM2m5}}</p>
+				<p class="scoreMission" ng-model="data.scoreM2"><span>Socre : </span>{{data.scoreM2 = data.scoreM2m1 + data.scoreM2m2 + data.scoreM2m3 + data.scoreM2m4 + data.scoreM2m5}}</p>
 			</div>
 			<div id="mission2" class="mission relative">
 				<div id="firstGroupeM2" class="relative divMission">
@@ -57,21 +57,21 @@
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Tablette dans les sarcophage</label>
+							<label>Personnage dans la galerie des personnages historiques</label>
 							<label class="scoreM2">{{data.scoreM2m3}}</label>
 						</div>
 						<input id="rangeM2m3" class="" type="range" min="0"  max="{{data.range3}}" value="0" step="1" ng-model="data.multiM2m3" ng-change="rangeMission2()">
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Tablette dans les sarcophage</label>
+							<label>Personnage dans sa vitrine mais pas debout</label>
 							<label class="scoreM2">{{data.scoreM2m4}}</label>
 						</div>
 						<input id="rangeM2m4" class="" type="range" min="0"  max="{{data.range4}}" value="0" step="1" ng-model="data.multiM2m4" ng-change="rangeMission2()">
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Tablette dans les sarcophage</label>
+							<label>Personnage debout dans sa vitrine</label>
 							<label class="scoreM2">{{data.scoreM2m5}}</label>
 						</div>
 						<input id="rangeM2m5" class="" type="range" min="0"  max="{{data.range5}}" value="0" step="1" ng-model="data.multiM2m5" ng-change="rangeMission2()">
@@ -83,11 +83,11 @@
 		<div class="cardMission">
 			<div class="title">
 				<p>Mission 3</p>
-				<p class="scoreMission" ng-model="scoreM2"><span>Socre : </span>{{data.scoreM3 = data.score1M3m1 + data.score1M3m2 + data.score1M3m3 + data.score2M3m1 + data.score2M3m2 + data.score2M3m3 + data.score2M3m4}}</p>
+				<p class="scoreMission" ng-model="data.data.scoreM3"><span>Socre : </span>{{data.scoreM3 = data.score1M3m1 + data.score1M3m2 + data.score1M3m3 + data.score2M3m1 + data.score2M3m2 + data.score2M3m3 + data.score2M3m4}}</p>
 			</div>
 			<div id="mission3" class="mission relative">
 				<div id="firstGroupeM3" class="relative divMission">
-					<div id="questionStatut" class="mesItem">
+					<div id="questionStatut" class="mesItem divBool">
 						<label disabled checked="false">Statut Construite : {{rangeM3}}</label>
 		      			<label class="boolMission toggle disable-user-behavior">
 		      				<input type="checkbox"" ng-model="statutConstruite" ng-change="resetM3()">
@@ -154,18 +154,109 @@
 		</div>
 		<hr>
 		<div class="cardMission">
-			<div id="penalite" class=" mission relative">
+			<div class="title">
+				<p>Mission 4</p>
+				<p class="scoreMission" ng-model="data.scoreM4"><span>Socre : </span>{{data.scoreM4 = data.scoreM4T1 + data.scoreM4T2}}</p>
+			</div>
+			<div id="mission4T1" class=" mission relative">
+				<div id="firstGroupeP" class="relative divMission mesItem" style="text-align: center;">		
+				  	<label>Tableau 1</label>
+					<label class="scoreM4">{{data.scoreM4T1 = data.scoreM4T1m1 + data.scoreM4T1m2 + data.scoreM4T1m3}}</label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau bien orienté</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(true)" ng-model="data.boolM4m1T1"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau bien placé</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(true)" ng-model="data.boolM4m2T1"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau sur son socle</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(true)" ng-model="data.boolM4m3T1"><div class="track"><div class="handle"></div></div></label>
+				</div>
+			</div>
+			<div id="mission4T2" class=" mission relative">
+				<div id="firstGroupeP" class="relative divMission mesItem" style="text-align: center;">		
+				  	<label>Tableau 2</label>
+					<label class="scoreM4">{{data.scoreM4T2 = data.scoreM4T2m1 + data.scoreM4T2m2 + data.scoreM4T2m3}}</label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau bien orienté</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(false)" ng-model="data.boolM4m1T2"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau bien placé</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(false)" ng-model="data.boolM4m2T2"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+				  	<label disabled checked="false">Tableau sur son socle</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(false)" ng-model="data.boolM4m3T2"><div class="track"><div class="handle"></div></div></label>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Mission 5</p>
+				<p class="scoreMission" ng-model="data.scoreM5"><span>Socre : </span>{{data.scoreM5}}</p>
+			</div>
+			<div id="mission5" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label disabled checked="false">Tablette dans les sarcophage</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
+				  	<label disabled checked="false">La musique a était ententu : </label>
+				  	<form ng-click="radioM5()">
+					  	<ion-radio ng-model="data.whereMusic" ng-value="1">A l'interieur de l'auditorium</ion-radio>
+					  	<ion-radio ng-model="data.whereMusic" ng-value="2">A l'exterieur de l'auditorium</ion-radio>
+				  	</form>
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label disabled checked="false">Tablette dans les sarcophage</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
+				  	<label disabled checked="false">La musique était :</label>
+				  	<form ng-click="radioM5()">
+					  	<ion-radio ng-model="data.music" ng-value="1">Une du répertoir du robot</ion-radio>
+					  	<ion-radio ng-model="data.music" ng-value="2">Partiellement composé</ion-radio>
+					  	<ion-radio ng-model="data.music" ng-value="3">Entierement composé</ion-radio>
+				  	</form>
 				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Mission 6</p>
+				<p class="scoreMission" ng-model="data.scoreM6"><span>Socre : </span>{{data.scoreM6}}</p>
+			</div>
+			<div id="mission6" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label disabled checked="false">Tablette dans les sarcophage</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
+				  	<label disabled checked="false">Le robot se trouve : </label>
+				  	<form ng-click="radioM6()">
+					  	<ion-radio ng-model="data.robot" ng-value="1">Dans l'atelier</ion-radio>
+					  	<ion-radio ng-model="data.robot" ng-value="2">Dans la loge</ion-radio>
+				  	</form>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+					<label disabled checked="false">Le robot est éteint</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="radioM6()" ng-model="data.boolM6" value="20"><div class="track"><div class="handle"></div></div></label>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="cardMission">
+			<div class="title">
+				<p>Bonus</p>
+				<p class="scoreMission" ng-model="data.bonus"><span>Socre : </span>{{data.bonus = data.bonus1 + data.bonus2 + data.bonus3}}</p>
+			</div>
+			<div id="bonus" class=" mission relative">
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+					<label disabled checked="false">Le robot utilise un bras robotisé</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus1" value="30"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+					<label disabled checked="false">Le robot utilise des capteurs</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus2" value="30"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+					<label disabled checked="false">Le robot utilise des objets créé avec un imprimante 3D</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus3" value="40"><div class="track"><div class="handle"></div></div></label>
 				</div>
 			</div>
 		</div>
