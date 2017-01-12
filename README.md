@@ -9,7 +9,8 @@ https://github.com/GuillaumeTorres/contestmanager
 ### Installation
 
 ```
-$ ionic start contestmanager blank
+Dans le dossier : 
+$ npm install -g cordova ionic
 $ npm install
 $ gulp
 $ ionic platform add [ ios | android ]
