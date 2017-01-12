@@ -1,80 +1,134 @@
 <ion-view view-title="Feuille des Missions">
-	<div class="scoreTotal">
-		Score Total : {{data.score = data.scoreM1 + data.scoreM2 + data.scoreM3 + data.scoreM4 + data.scoreM5 + data.scoreM6 + data.bonus}}
+	<div class="info">
+		<div class="divBtn">
+			<button class="btnReset button button-block button-positive" ng-model="btnReset" ng-click="btnReset()">Reset</button>
+			<button class="btnSave button button-block button-positive" ng-model="btnSave" ng-click="btnSave()">Save</button>
+			<button class="btnScore button button-block button-positive" ng-model="btnScore" ng-click="btnScore()">Score</button>
+		</div>
+		<div class="timer">
+			<div style="display: inline-block; width: 48%;">
+				{{counter | secondsToHHmmss}}
+			    <img class="imgTimer" ng-click='startCounter()' src="assets/img/play.png">
+			    <img class="imgTimer" ng-click='stopCounter()' src="assets/img/pause.png">
+			    <img class="imgTimer" ng-click='resetCounter()' src="assets/img/refresh.png">
+			</div> 
+			<div style="display: inline-block; width: 48%;">
+
+				{{timer | secondsToHHmmss}}
+				<span id="play"><img class="imgTimer" ng-click='startTimer()' src="assets/img/play.png"></span> 
+				<span id="pause"><img class="imgTimer" ng-click='stopTimer()' src="assets/img/pause.png"></span> 
+				<span id="reset"><img class="imgTimer" ng-click='resetTimer()' src="assets/img/refresh.png"></span>
+			</div>
+		</div>
+		<div class="scoreTotal">
+			<span>Score Total : {{data.totalScore = data.scoreM1 + data.scoreM2 + data.scoreM3 + data.scoreM4 + data.scoreM5 + data.scoreM6 + data.bonus}}</span>
+		</div>
 	</div>
 	<ion-content class="margHeaderMission">
 		<div class="cardMission">
 			<div id="penalite" class=" mission relative">
-				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label class="">Nombre de pénalité :</label>
-				    <select class="" ng-change="penalite(selectPenalite)" ng-model="selectPenalite">
-				      <option ng-repeat="i in data.penalite" value="{{i}}">{{i}}</option>
-				    </select>
+				<div id="firstGroupeP" class="relative divMission mesItem divSelectPenalite">	
+					<div class="divLabelM2">
+						<label class="">Nombre de pénalité :</label>
+						<label class="scoreM2">{{data.penalite}}</label>
+					</div>
+					<div class="divRange">
+						<input id="penalite" class="rangeGood rangeM2 " type="range" min="0"  max="10" value="0" step="0.01" ng-model="data.penalite" ng-change="penalite({{data.penalite}})">
+					</div>
 				</div>
 			</div>
 		</div>
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 1</p>
-				<p class="scoreMission" ng-model="data.scoreM1"><span>Socre : </span>{{data.scoreM1 = data.scoreM1m1 + data.choice}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission1.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 1</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.scoreM1"><span>Score : </span>{{data.scoreM1 = data.scoreM1m1 + data.choice}}</span>
+				</div>
 			</div>
 			<div id="mission1" class=" mission relative">
 				<div id="firstGroupeM1" class="relative divMission item divBool">
-					<label disabled checked="false">Tablette dans les sarcophage</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track"><div class="handle"></div></div></label>
+					<label disabled checked="false">La tablette est dans les sarcophage</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM1Click(data.boolM1)" ng-model="data.boolM1" value="20"><div class="track test"><div class="handle"></div></div></label>
 				</div>
 
 				<div id="secondGroupM1" class="relative divMissionRadio">
 					<ion-radio ng-model="data.choice" ng-value="20">La momie est assise sur son trône et se trouve dans le sarcophage</ion-radio>
 					<ion-radio ng-model="data.choice" ng-value="50">La momie et son trône se trouvent dans la loge du gardien</ion-radio>
 					<ion-radio ng-model="data.choice" ng-value="80">La momie se trouve allongée sans son trône dans le sarcophage</ion-radio>	
-					<ion-radio ng-model="data.choice" ng-value="0">Autre</ion-radio>	
+					<ion-radio ng-model="data.choice" ng-value="0">Autre situation</ion-radio>	
 				</div>
 			</div>
 		</div>
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 2</p>
-				<p class="scoreMission" ng-model="data.scoreM2"><span>Socre : </span>{{data.scoreM2 = data.scoreM2m1 + data.scoreM2m2 + data.scoreM2m3 + data.scoreM2m4 + data.scoreM2m5}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission2.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 2</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.scoreM2"><span>Score : </span>{{data.scoreM2 = data.scoreM2m1 + data.scoreM2m2 + data.scoreM2m3 + data.scoreM2m4 + data.scoreM2m5}}</span>
+				</div>
 			</div>
 			<div id="mission2" class="mission relative">
 				<div id="firstGroupeM2" class="relative divMission">
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Personnage en dehors des couloirs du temps</label>
-							<label class="scoreM2">{{data.scoreM2m1}}</label>
+							<label>Nombre de personnage en dehors des couloirs du temps</label>
+							<label class="scoreM2">{{data.numberM2m1}}</label>
 						</div>
-						<input id="rangeM2m1" class="" type="range" min="0"  max="{{data.range1}}" value="0" step="1" ng-model="data.multiM2m1" ng-change="rangeMission2()">
+						<div class="divRange">
+							<input id="rangeM2m1" class="rangeGood rangeM2 " type="range" min="0"  max="{{data.range1}}" value="0" step="0.01" ng-model="data.multiM2m1" ng-change="rangeMission2('rangeM2m1')">
+							<!--<output id="rangeM2m1" for="foo" value="{{data.multiM2m1}}"></output>-->
+						</div>
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Personnage dans l'atelier / la loge</label>
-							<label class="scoreM2">{{data.scoreM2m2 }}</label>
+							<label>Nombre de personnage dans l'atelier / la loge</label>
+							<label class="scoreM2">{{data.numberM2m2}}</label>
 						</div>
-						<input id="rangeM2m2" class="" type="range" min="0"  max="{{data.range2}}" value="0" step="1" ng-model="data.multiM2m2" ng-change="rangeMission2()">
+						<div class="divRange">
+							<input id="rangeM2m2" class="rangeGood rangeM2" type="range" min="0"  max="{{data.range2}}" value="0" step="0.01" ng-model="data.multiM2m2" ng-change="rangeMission2('rangeM2m2')">
+							<!--<output id="rangeM2m2" for="foo" value = "{{data.multiM2m2}}"></output>-->
+						</div>
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Personnage dans la galerie des personnages historiques</label>
-							<label class="scoreM2">{{data.scoreM2m3}}</label>
+							<label>Nombre de personnage dans la galerie des personnages historiques</label>
+							<label class="scoreM2">{{data.numberM2m3}}</label>
 						</div>
-						<input id="rangeM2m3" class="" type="range" min="0"  max="{{data.range3}}" value="0" step="1" ng-model="data.multiM2m3" ng-change="rangeMission2()">
+						<div class="divRange">
+							<input id="rangeM2m3" class="rangeGood rangeM2" type="range" min="0"  max="{{data.range3}}" value="0" step="0.01" ng-model="data.multiM2m3" ng-change="rangeMission2('rangeM2m3')">
+							<!--<output id="rangeM2m3" for="foo" value = "{{data.multiM2m3}}"></output>-->
+						</div>
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Personnage dans sa vitrine mais pas debout</label>
-							<label class="scoreM2">{{data.scoreM2m4}}</label>
+							<label>Nombre de personnage dans sa vitrine mais pas debout</label>
+							<label class="scoreM2">{{data.numberM2m4}}</label>
 						</div>
-						<input id="rangeM2m4" class="" type="range" min="0"  max="{{data.range4}}" value="0" step="1" ng-model="data.multiM2m4" ng-change="rangeMission2()">
+						<div class="divRange">
+							<input id="rangeM2m4" class="rangeGood rangeM2" type="range" min="0"  max="{{data.range4}}" value="0" step="0.01" ng-model="data.multiM2m4" ng-change="rangeMission2('rangeM2m4')">
+							<!--<output id="rangeM2m4" for="foo" value = "{{data.multiM2m4}}"></output>-->
+						</div>
 					</div>
 					<div class="mesItem">
 						<div class="divLabelM2">
-							<label>Personnage debout dans sa vitrine</label>
-							<label class="scoreM2">{{data.scoreM2m5}}</label>
+							<label>Nombre de personnage debout dans sa vitrine</label>
+							<label class="scoreM2">{{data.numberM2m5}}</label>
 						</div>
-						<input id="rangeM2m5" class="" type="range" min="0"  max="{{data.range5}}" value="0" step="1" ng-model="data.multiM2m5" ng-change="rangeMission2()">
+						<div class="divRange">
+							<input id="rangeM2m5" class="rangeGood rangeM2" type="range" min="0"  max="{{data.range5}}" value="0" step="0.01" ng-model="data.multiM2m5" ng-change="rangeMission2('rangeM2m5')">
+							<!--<output id="rangeM2m5" for="foo" value = "{{data.multiM2m5}}"></output>-->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -82,13 +136,20 @@
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 3</p>
-				<p class="scoreMission" ng-model="data.data.scoreM3"><span>Socre : </span>{{data.scoreM3 = data.score1M3m1 + data.score1M3m2 + data.score1M3m3 + data.score2M3m1 + data.score2M3m2 + data.score2M3m3 + data.score2M3m4}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission3.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 3</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.data.scoreM3"><span>Score : </span>{{data.scoreM3 = data.score1M3m1 + data.score1M3m2 + data.score1M3m3 + data.score2M3m1 + data.score2M3m2 + data.score2M3m3 + data.score2M3m4}}</span>
+				</div>
 			</div>
 			<div id="mission3" class="mission relative">
 				<div id="firstGroupeM3" class="relative divMission">
 					<div id="questionStatut" class="mesItem divBool">
-						<label disabled checked="false">Statut Construite : {{rangeM3}}</label>
+						<label disabled checked="false">La Statue est Construite : </label>
 		      			<label class="boolMission toggle disable-user-behavior">
 		      				<input type="checkbox"" ng-model="statutConstruite" ng-change="resetM3()">
 	      					<div class="track">
@@ -99,55 +160,53 @@
 					<div id="statutNonConstruite" ng-show="!statutConstruite">
 						<div class="mesItem">
 							<div class="divLabelM2">
-								<label>Bloc dans l'auditorium</label>
-								<label class="scoreM2">{{data.score1M3m1}}</label>
+								<label>Nombre de loc dans l'auditorium</label>
+								<label class="scoreM2">{{data.number1M3m1}}</label>
 							</div>
-							<input id="rangeM3m2" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range1M3m1" ng-change="rangeMission3(false)">
+							<input id="rangeM3m2" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m1}}" value="0" step="0.01" ng-model="data.range1M3m1" ng-change="rangeMission3(false)">
 						</div>
 						<div class="mesItem">
 							<div class="divLabelM2">
 								<label>Bloc dans l'atelier</label>
-								<label class="scoreM2">{{data.score1M3m2}}</label>
+								<label class="scoreM2">{{data.number1M3m2}}</label>
 							</div>
-							<input id="rangeM3m3" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range1M3m2" ng-change="rangeMission3(false)">
+							<input id="rangeM3m3" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m2}}" value="0" step="0.01" ng-model="data.range1M3m2" ng-change="rangeMission3(false)">
 						</div>
 						<div class="mesItem">
 							<div class="divLabelM2">
-								<label>Bloc dans la salle de la Statut</label>
-								<label class="scoreM2">{{data.score1M3m3}}</label>
+								<label>Bloc dans la salle de la Statue</label>
+								<label class="scoreM2">{{data.number1M3m3}}</label>
 							</div>
-							<input id="rangeM3m4" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range1M3m3" ng-change="rangeMission3(false)">
+							<input id="rangeM3m4" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m3}}" value="0" step="0.01" ng-model="data.range1M3m3" ng-change="rangeMission3(false)">
 						</div>
 					</div>
 					<div id="statutConstruite" ng-show="statutConstruite">
-						<div class="mesItem">
-							<div class="divLabelM2">
-								<label>Statut dans l'atelier</label>
-								<label class="scoreM2">{{data.score2M3m1}}</label>
+					  	<div class="divStatueConstruit">
+							<p>Nombre de blocs au dessus des blocs noirs : </p>
+							
+						  	<div class="mesItem">
+								<div class="divLabelM2">
+									<label>Dans l'atelier </label>
+									<label class="scoreM2">{{data.number2M3m1}}</label>
+								</div>
+								<input id="rangeM3m2" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m4}}" value="0" step="0.01" ng-model="data.range2M3m1" ng-change="rangeMission3(true)">
 							</div>
-							<input id="rangeM3m2" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range2M3m1" ng-change="rangeMission3(true)">
-						</div>
-						<div class="mesItem">
-							<div class="divLabelM2">
-								<label>Statut dans la salle de la Statut</label>
-								<label class="scoreM2">{{data.score2M3m2}}</label>
+							<div class="mesItem">
+								<div class="divLabelM2">
+									<label>Dans la salle de la Statue</label>
+									<label class="scoreM2">{{data.number2M3m2}}</label>
+								</div>
+								<input id="rangeM3m3" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m5}}" value="0" step="0.01" ng-model="data.range2M3m2" ng-change="rangeMission3(true)">
 							</div>
-							<input id="rangeM3m3" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range2M3m2" ng-change="rangeMission3(true)">
-						</div>
-						<div class="mesItem">
-							<div class="divLabelM2">
-								<label>Statut à l'intérieur du socle</label>
-								<label class="scoreM2">{{data.score2M3m3}}</label>
+							<div class="mesItem">
+								<div class="divLabelM2">
+									<label>A l'intérieur du socle</label>
+									<label class="scoreM2">{{data.number2M3m3}}</label>
+								</div>
+								<input id="rangeM3m4" class="rangeGood rangeM3" type="range" min="0"  max="{{data.rangeM3m6}}" value="0" step="0.01" ng-model="data.range2M3m3" ng-change="rangeMission3(true)">
 							</div>
-							<input id="rangeM3m4" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range2M3m3" ng-change="rangeMission3(true)">
-						</div>
-						<div class="mesItem">
-							<div class="divLabelM2">
-								<label>Base de la Statut lestée</label>
-								<label class="scoreM2">{{data.score2M3m4}}</label>
-							</div>
-							<input id="rangeM3m5" class="" type="range" min="0"  max="{{data.rangeM3}}" value="0" step="1" ng-model="data.range2M3m4" ng-change="rangeMission3(true)">
-						</div>
+					  	</div>
+						
 					</div>
 				</div>
 			</div>
@@ -155,8 +214,15 @@
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 4</p>
-				<p class="scoreMission" ng-model="data.scoreM4"><span>Socre : </span>{{data.scoreM4 = data.scoreM4T1 + data.scoreM4T2}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission4.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 4</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.scoreM4"><span>Score : </span>{{data.scoreM4 = data.scoreM4T1 + data.scoreM4T2}}</span>
+				</div>
 			</div>
 			<div id="mission4T1" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem" style="text-align: center;">		
@@ -172,7 +238,7 @@
 	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(true)" ng-model="data.boolM4m2T1"><div class="track"><div class="handle"></div></div></label>
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
-				  	<label disabled checked="false">Tableau sur son socle</label>
+				  	<label disabled checked="false">Tableau sur son support</label>
 	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(true)" ng-model="data.boolM4m3T1"><div class="track"><div class="handle"></div></div></label>
 				</div>
 			</div>
@@ -190,7 +256,7 @@
 	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(false)" ng-model="data.boolM4m2T2"><div class="track"><div class="handle"></div></div></label>
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
-				  	<label disabled checked="false">Tableau sur son socle</label>
+				  	<label disabled checked="false">Tableau sur son support</label>
 	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-click="boolM4Click(false)" ng-model="data.boolM4m3T2"><div class="track"><div class="handle"></div></div></label>
 				</div>
 			</div>
@@ -198,23 +264,31 @@
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 5</p>
-				<p class="scoreMission" ng-model="data.scoreM5"><span>Socre : </span>{{data.scoreM5}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission5.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 5</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.scoreM5"><span>Score : </span>{{data.scoreM5}}</span>
+				</div>
 			</div>
 			<div id="mission5" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label disabled checked="false">La musique a était ententu : </label>
-				  	<form ng-click="radioM5()">
-					  	<ion-radio ng-model="data.whereMusic" ng-value="1">A l'interieur de l'auditorium</ion-radio>
-					  	<ion-radio ng-model="data.whereMusic" ng-value="2">A l'exterieur de l'auditorium</ion-radio>
+				  	<label disabled checked="false">La mélodie a été entendue : </label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolM5Click(data.boolM5)" ng-model="data.boolM5" value="20"><div class="track test"><div class="handle"></div></div></label>
+				  	<form ng-click="radioM5(data.boolM5)">
+					  	<ion-radio ng-model="data.whereMusic" ng-value="1" ng-disabled="!data.boolM5" ng-class="{backRed: !data.boolM5}">à l'interieur de l'auditorium</ion-radio>
+					  	<ion-radio ng-model="data.whereMusic" ng-value="2" ng-disabled="!data.boolM5" ng-class="{backRed: !data.boolM5}">à l'exterieur de l'auditorium</ion-radio>
 				  	</form>
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem">		
-				  	<label disabled checked="false">La musique était :</label>
-				  	<form ng-click="radioM5()">
-					  	<ion-radio ng-model="data.music" ng-value="1">Une du répertoir du robot</ion-radio>
-					  	<ion-radio ng-model="data.music" ng-value="2">Partiellement composé</ion-radio>
-					  	<ion-radio ng-model="data.music" ng-value="3">Entierement composé</ion-radio>
+				  	<label disabled checked="false">La mélodie est issue :</label>
+				  	<form ng-click="radioM5(data.boolM5)">
+					  	<ion-radio ng-model="data.music" ng-value="1" ng-disabled="!data.boolM5" ng-class="{backRed: !data.boolM5}">Du répertoire du robot</ion-radio>
+					  	<ion-radio ng-model="data.music" ng-value="2" ng-disabled="!data.boolM5" ng-class="{backRed: !data.boolM5}">D'une carte musique</ion-radio>
+					  	<ion-radio ng-model="data.music" ng-value="3" ng-disabled="!data.boolM5" ng-class="{backRed: !data.boolM5}">D'une composition</ion-radio>
 				  	</form>
 				</div>
 			</div>
@@ -222,8 +296,15 @@
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Mission 6</p>
-				<p class="scoreMission" ng-model="data.scoreM6"><span>Socre : </span>{{data.scoreM6}}</p>
+				<div class="titleImg">
+					<span class="imgMission"><img src="assets/img/mission6.jpg"></span>
+				</div>
+				<div class="titleTitle">
+					<span>Mission 6</span>
+				</div>
+				<div class="titleScore">
+					<span class="scoreMission" ng-model="data.scoreM6"><span>Score : </span>{{data.scoreM6}}</span>
+				</div>
 			</div>
 			<div id="mission6" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem">		
@@ -231,6 +312,7 @@
 				  	<form ng-click="radioM6()">
 					  	<ion-radio ng-model="data.robot" ng-value="1">Dans l'atelier</ion-radio>
 					  	<ion-radio ng-model="data.robot" ng-value="2">Dans la loge</ion-radio>
+					  	<ion-radio ng-model="data.robot" ng-value="0">Autre Situation</ion-radio>
 				  	</form>
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
@@ -242,8 +324,15 @@
 		<hr>
 		<div class="cardMission">
 			<div class="title">
-				<p>Bonus</p>
-				<p class="scoreMission" ng-model="data.bonus"><span>Socre : </span>{{data.bonus = data.bonus1 + data.bonus2 + data.bonus3}}</p>
+				<div class="titleImg">
+					
+				</div>
+				<div class="titleTitle">
+					<p>Bonus</p>
+				</div>
+				<div class="titleScore">
+					<p class="scoreMission" ng-model="data.bonus"><span>Score : </span>{{data.bonus = data.bonus1 + data.bonus2 + data.bonus3 + data.bonus4}}</p>
+				</div>
 			</div>
 			<div id="bonus" class=" mission relative">
 				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
@@ -256,7 +345,11 @@
 				</div>
 				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
 					<label disabled checked="false">Le robot utilise des objets créé avec un imprimante 3D</label>
-	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus3" value="40"><div class="track"><div class="handle"></div></div></label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus3" value="20"><div class="track"><div class="handle"></div></div></label>
+				</div>
+				<div id="firstGroupeP" class="relative divMission mesItem divBool">		
+					<label disabled checked="false">La statue a une base lestée</label>
+	      			<label class="boolMission toggle disable-user-behavior"><input type="checkbox" ng-change="boolBonus()" ng-model="data.boolBonus4" value="20"><div class="track"><div class="handle"></div></div></label>
 				</div>
 			</div>
 		</div>

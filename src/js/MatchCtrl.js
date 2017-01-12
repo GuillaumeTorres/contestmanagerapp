@@ -14,10 +14,10 @@ module.exports = angular.module('myApp.match', [])
     else return false;
   };
 
-  var user = JSON.parse(window.localStorage.getItem('user'));
-  var id = user.id_team;
-  console.log('user');
-  console.log(user);
+  var team = JSON.parse(window.localStorage.getItem('team'));
+  var id = team.id;
+  console.log('team');
+  console.log(team);
   console.log('id');
   console.log(id);
   //window.localStorage.setItem( 'user', JSON.stringify(donnees[i]));

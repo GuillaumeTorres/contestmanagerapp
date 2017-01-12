@@ -23,6 +23,7 @@ angular.module('myApp', [
       require('./SearchTeamCtrl.js').name,
       require('./ChooseUserCtrl.js').name,
       require('./MissionArbitreCtrl.js').name,
+      require('./MissionScoresCtrl.js').name,
 
       ])
 
@@ -42,6 +43,13 @@ angular.module('myApp', [
       StatusBar.styleDefault();
     }
   });
+})
+
+
+.filter('secondsToHHmmss', function($filter) {
+    return function(seconds) {
+        return $filter('date')(new Date(0, 0, 0).setSeconds(seconds), 'mm:ss');
+    };
 })
 
 .directive('scrollOnClick', function() {
@@ -155,6 +163,12 @@ angular.module('myApp', [
                     templateUrl: 'templates/mission.html',
                     controller: 'MissionCtrl',
                     controllerAs: 'mission'
+                })
+                .state('home.missionScores', {
+                    url: '/mission/scores',
+                    templateUrl: 'templates/missionScores.html',
+                    controller: 'MissionScoresCtrl',
+                    controllerAs: 'missionScores'
                 })
                 .state('home.team', {
                     url: '/team/:id',

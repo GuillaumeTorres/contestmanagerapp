@@ -93,6 +93,10 @@ gulp.task('watch', ['sass', 'images', 'lib', 'json', 'views', 'scripts'], functi
   gulp.watch(paths.src, ['default']);
 });
 
+gulp.task('watchJsHtmlCss', ['sass', 'views', 'scripts'], function () {
+  gulp.watch(paths.src, ['default']);
+});
+
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
