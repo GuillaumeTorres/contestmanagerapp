@@ -1,48 +1,42 @@
 <ion-view view-title="Matchs">
 	<ion-content>
-		<div class="card clearfix" ng-repeat="match in match" ng-class="{hide: finished({{match.finished}})}">
-		  <div class="item item-text-wrap div_match not-finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show: show}">
+		<div class="card clearfix " ng-repeat="match in match" ng-class="{hide: !finished({{match.finished}})}">
+		  <div class="item item-text-wrap div_match cardMatch not-finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show: show}">
 		  	<div class="row div_match" ng-class="{div_match_active: show}">
 		  		<span class="col col-40 center">{{match.team1.name}}</span>
 		  		<span class="col col-20 center">VS</span>
 		  		<span class="col col-40 center">{{match.team2.name}}</span>
 		  	</div>		
 		  	<div class="row">
-		  		<span class="col col-50 center">Arbitre : {{match.team1.arbiter.first_name}}</span>
-		  		<span class="col col-50 center">Arbitre : {{match.team2.arbiter.first_name}}</span>
-		  	</div>		
+		  		<span class="col center">Table : {{match.num_table}}</span>
+		  	</div>	
 		  	<div class="row">
 		  		<button class="col col-50 center button-clear" ui-sref='home.team({ id: match.team1.id})'>Infos sur la team</button>
 		  		<button class="col col-50 center button-clear" ui-sref='home.team({ id: match.team2.id})'>Infos sur la team</button>
 		  	</div>  	
 		  	<div class="row">
-		  		<span class="col center">Date : {{match.date_match | date: 'medium'}}</span>
+		  		<span class="col center">Date : {{match.date_match | date: 'fullDate'}}</span>
 		  	</div>
 		  </div>
 		</div>
-		<div class="card clearfix" ng-repeat="match in match" ng-class="{hide: !finished({{match.finished}})}">
-		  <div class="item item-text-wrap div_match finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show_finish: show}">
+		<div class="card clearfix " ng-repeat="match in match" ng-class="{hide: finished({{match.finished}})}">
+		  <div class="item item-text-wrap div_match cardMatch finish" on-swipe-left="onSwipeleft()" ng-click="show=!show" ng-class="{show: show}">
 		  	<div class="row div_match" ng-class="{div_match_active: show}">
 		  		<span class="col col-40 center">{{match.team1.name}}</span>
 		  		<span class="col col-20 center">VS</span>
 		  		<span class="col col-40 center">{{match.team2.name}}</span>
-		  	</div>		
+		  	</div>	
 		  	<div class="row">
-		  		<span class="col col-50 center">Score : 150</span>
-		  		<span class="col col-50 center">Score : 200</span>
-		  	</div>		
-		  	<div class="row">
-		  		<span class="col col-50 center">Arbitre : {{match.team1.arbiter.first_name}}</span>
-		  		<span class="col col-50 center">Arbitre : {{match.team2.arbiter.first_name}}</span>
+		  		<span class="col center">Table : {{match.num_table}}</span>
 		  	</div>		
 		  	<div class="row">
 		  		<button class="col col-50 center button-clear" ui-sref='home.team({ id: match.team1.id})'>Infos sur la team</button>
 		  		<button class="col col-50 center button-clear" ui-sref='home.team({ id: match.team2.id})'>Infos sur la team</button>
 		  	</div>  	
 		  	<div class="row">
-		  		<span class="col center">Date : {{match.date_match | date: 'medium'}}</span>
+		  		<span class="col center">Date : {{match.date_match | date: 'fullDate'}}</span>
 		  	</div>
 		  </div>
-		</div>	
+		</div>
 	</ion-content>
 </ion-view>

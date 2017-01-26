@@ -3,7 +3,7 @@
 		<div ng-repeat="score in donnees" class="card" id="score{{$index}}">
 		  <div class="item item-text-wrap" >
 		  	<div class="divTitle" ng-click="show = !show">
-			    <p class="titleScore">Nom de la fiche de score : {{score.Name}}</p>
+			    <p class="titleScore">Nom de la fiche de score : {{score.Team}}</p>
 			    <p class="titleScore">Score : {{score.ScoreTotal}}</p>
 			    <p class="titleScore">Temps : {{score.Time | secondsToHHmmss}}</p>
 		  	</div>

@@ -32,6 +32,9 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('default', ['sass', 'images', 'lib', 'json', 'views', 'scripts']);
+gulp.task('jsScssHtml', ['sass', 'views', 'scripts']);
+
+gutil.log('stuff happened', 'Really it did', gutil.colors.magenta('123'));
 
 gulp.task('sass', function() {
   return gulp
@@ -93,8 +96,11 @@ gulp.task('watch', ['sass', 'images', 'lib', 'json', 'views', 'scripts'], functi
   gulp.watch(paths.src, ['default']);
 });
 
-gulp.task('watchJsHtmlCss', ['sass', 'views', 'scripts'], function () {
-  gulp.watch(paths.src, ['default']);
+  /**
+ * Watch js html ans scss files task for development
+ */
+gulp.task('watchJsScssHtml', ['sass', 'views', 'scripts'], function () {
+  gulp.watch(paths.src, ['jsScssHtml']);
 });
 
 

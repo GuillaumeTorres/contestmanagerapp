@@ -22,6 +22,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "src/lib/ionic/scss/ionic";
 
 
+
+/*
+FOOTER EN DEV
+*/
+
+.footer {
+  display: none !important;
+}
+
+
 /* Empty. Add your own CSS if you like */
 
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
@@ -32,34 +42,10 @@ body {
   font-family: 'Arial' !important;
 }
 
-output { 
-  position: absolute;
-  background-image: linear-gradient(#444444, #999999);
-  width: 40px; 
-  height: 30px; 
-  text-align: center; 
-  color: white; 
-  border-radius: 10px; 
-  display: inline-block; 
-  font: bold 15px/30px Georgia;
-  bottom: 120%;
-  left: 0;
-  z-index: 999;
-  display: none;
+.cardMatch{
+  overflow-y: hidden; 
 }
-output:after { 
-  content: "";
-  position: absolute; 
-  width: 0;
-  height: 0;
-  border-top: 10px solid #999999;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  margin-top: -1px;
-}
+
 .divRange {
   position: relative;
 }
@@ -103,7 +89,6 @@ form {
 
 .div_match{
   height: 70px;
-  transition: height 1s;
 }
 
 .div_match_active{
@@ -157,81 +142,7 @@ form {
   height: 20px;
 }
 
-.btn_arbitre {
-    height: 70px;
-}
 
-.cardTeam {
-    margin: 4%;
-    width: auto;
-    min-width: 25%;
-    text-align: center;
-    border-radius: 2px;
-    font-size: 1.4rem;
-    background: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    height: 80px;
-    line-height: 80px;
-    white-space: nowrap;
-    float: left;
-}
-
-.loader {
-    text-align: center;
-    border-radius: 2px;
-    font-size: 1.4rem;
-    white-space: nowrap;
-    float: left;
-    width: 40%;
-    height: 40px;
-    line-height: 40px;
-    position: absolute;
-    top: 40%;
-    left: 30%;
-}
-
-.loaderGrenage {
-    height: 100%;
-    width: 40%;
-    float: left;
-}
-
-.loaderText {
-    height: 100%;
-    width: 60%;
-    font-size: 16px;
-}
-
-.searchBar {
-    padding: 6px 55px;
-    height: auto;
-    border-radius: 2px;
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 3rem;
-    color: #141414;
-    background-color: #fff;
-    background-position: 8px center;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-}
-
-.footer {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    background-color: #0c60ee;
-    position: absolute;
-    bottom: 0;
-    z-index: 99;
-    text-align: center;
-
-    .btnFooter {
-        width: 25%;
-        height: 20px;
-        line-height: 10px;
-    }
-
-}
 
 img:active {
   background-color: grey;
@@ -282,8 +193,6 @@ img:active {
     width: 100%;
     padding: 5px;
     height: auto;
-    min-height: 50px;
-    margin: 20px auto;
     
     .divBool{
       padding-right: 70px;
@@ -296,34 +205,47 @@ img:active {
     .title {
         width: 100%;
         text-align: center;
+        background-color: #e2e2e2;
+        height: auto;
+        display: flex; /* contexte sur le parent */
+        justify-content: center; /* alignement vertical */
         
         .titleImg {
-          width: 10%;
-          display: inline-block;
-          min-height: 50px;
+          width: 21%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+          }
         }
 
         .titleTitle {
-          width: 50%;
-          display: inline-block;
-          position: relative;
-          top: -35px;
-          font-size: 22px;
+          width: 46%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+            font-size: 34px !important;
+          }
         }
 
         .titleScore {
-          width: 30%;
-          display: inline-block;
-          position: relative;
-          top: -35px;
-          font-size: 20px;
+          width: 21%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+          }
         }
 
-        .imgMission {   
-
-          img {
+        .imgMission {  
             width: 50px;
-          }
         }
 
         .scoreMission{
@@ -391,7 +313,7 @@ img:active {
 }
 
 .margHeaderMission {
-    top: 170px;
+    top: 185px;
 }
 
 .margContentScore {
@@ -442,6 +364,20 @@ img:active {
     }
 }
 
+.labelM5 {
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    padding: 16px 16px 0 0;
+    font-size: 16px;
+
+    label {
+        font-size: 16px;
+    }
+}
+
 .titleScore {
   
 }
@@ -465,6 +401,36 @@ img:active {
       display: block;
     }
 }
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+    white-space: normal;
+}
+
+
+.repBool {
+  font-size: 100% !important;
+  color: white;
+}
+
+.divRange {
+  position: relative;
+}
+p {
+  margin: 0;
+    font-size: 16px;
+}
+
+form {
+  margin: 15px 0 0 0;
+}
+
+.toggle .track {
+    background-color: #E91E63;    
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5px;
+}
+
 
 .Score {
     
@@ -620,10 +586,157 @@ input[type=range]:focus::-ms-fill-upper {
   text-align: center;
 }
 
-@media (min-width: 850px) {
-    .margHeaderMission {
-      top: 170px;
+
+
+
+
+
+
+
+/*
+
+FIN PARTIE FEUILLE DE MISSION
+
+*/
+
+
+.btn_arbitre {
+    height: 70px;
+}
+
+
+.cardTeam {
+  position: relative;
+  margin: 4%;
+  width: 25%;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 1.4rem;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  height: 80px;
+  float: left;
+
+  .nomGroupTeam {
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+
+    span {
+      line-height: 1;
+      font-size: 90% !important;
+    }
   }
+}
+
+.test {
+  position: relative;
+}
+
+.loader {
+    text-align: center;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    float: left;
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+}
+
+.loaderGrenage {
+    height: 100%;
+    width: 40%;
+    float: left;
+}
+
+.loaderText {
+    height: 100%;
+    width: 60%;
+    font-size: 16px;
+}
+
+.searchBar {
+    padding: 6px 55px;
+    height: auto;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 3rem;
+    color: #141414;
+    background-color: #fff;
+    background-position: 8px center;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.footer {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #0c60ee;
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+    text-align: center;
+
+    .btnFooter {
+        width: 25%;
+        height: 20px;
+        line-height: 10px;
+    }
+
+}
+
+.paddingIonContent {
+  padding: 50% 10px;
+}
+
+
+.btnBackButton{
+    width: 49%;
+    display: inline;
+}
+
+.divBackButton { 
+    position: relative;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+LES MEDIA QUERIES
+
+*/
+
+@media (min-width: 850px) {
+    .imgMission {  
+      width: 100px;
+    }
+
+    .imgTimer {
+      width: 50px;
+    }
+    .margHeaderMission {
+      top: 185px;
+    }
 
     .info {
       top: 30px;
@@ -661,37 +774,67 @@ input[type=range]:focus::-ms-fill-upper {
       line-height: 1;
 
   }
+
+
+  .cardTeam {
+      height: 200px;
+  }
 }
+
+@media (max-width: 850px) and (orientation: landscape) {
+  .choosUserView {
+    height: 100%;
+  }
+
+  .paddingIonContent {
+    padding: 10px;
+  }
+}
+
 
 
 @media (max-width: 350px) {
    
-  .cardMission .title .scoreMission {
-      position: absolute;
-      top: 4px;
-      right: 40px;
-      font-size: 17px;
+  .imgMission {  
+      width: 30px;
   }
 
   .cardMission .title .titleScore {
-      width: 40%;
-      display: inline-block;
-      position: relative;
-      top: -55px;
-      font-size: 20px;
+      width: 25%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+      }
   }
 
   .cardMission .title .titleTitle {
-      width: 30%;
-      display: inline-block;
-      position: relative;
-      top: -35px;
-      font-size: 22px;
-      margin-left: 15%;
+      width: 46%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+        font-size: 26px !important;
+      }
+  }
+
+  .cardMission .title .titleImg {
+      width: 21%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+      }
   }
 
   label, input, button, select, textarea, span {
-      font-size: 20px !important;
+      font-size: 18px !important;
   }
 
   p {

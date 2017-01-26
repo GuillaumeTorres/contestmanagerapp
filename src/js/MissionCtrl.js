@@ -14,6 +14,7 @@ module.exports = angular.module('myApp.mission', [])
 
 	function init() {
 
+		console.log('Init');
 	    var data = {
 			rangeM3 : 10,
 			rangeM3Max: 10,
@@ -100,12 +101,22 @@ module.exports = angular.module('myApp.mission', [])
 			number2M3m3: 0,
 			number1M3m1: 0,
 			number1M3m2: 0,
-			number1M3m3: 0
+			number1M3m3: 0,
+			statutConstruite: false
 		}
 
 		return data;
 
-		console.log('Init');
+	}
+
+
+	function getPassword() {
+
+		console.log('getPassword');
+		var password = 'arbitre'
+
+		return password;
+
 	}
 
 	$scope.btnReset = function() {
@@ -130,31 +141,78 @@ module.exports = angular.module('myApp.mission', [])
 
 		$scope.donnees = {};
 
-		// An elaborate, custom popup
-		var myPopup = $ionicPopup.show({
-		template: '<input type="text" ng-model="donnees.nomTeam">',
-		title: 'Entrer le nom de la fiche de score',
-		scope: $scope,
-		buttons: [
-		  { text: 'Cancel' },
-		  {
-		    text: '<b>Save</b>',
-		    type: 'button-positive',
-		    onTap: function(e) {
-		      if (!$scope.donnees.nomTeam) {
-		        e.preventDefault();
-		      } else {
-		        return $scope.donnees.nomTeam;
-		      }
-		    }
-		  }
-		]
-		});
+		var isArbitre = JSON.parse(window.localStorage.getItem('isArbitre'));
+
+
+        console.log(' isArbitre : ');
+        console.log(isArbitre);
+
+        if(isArbitre){
+
+			var teamArbitre = JSON.parse(window.localStorage.getItem('teamArbitre'));
+
+
+	        console.log(' teamArbitre : ');
+	        console.log(teamArbitre);
+	        var teamName = teamArbitre.name;
+        	console.log('Je suis un Arbitre');
+			// An elaborate, custom popup
+			var myPopup = $ionicPopup.show({
+			template: '<input type="password" ng-model="donnees.password">',
+			title: 'Entrer le mot de pass',
+			scope: $scope,
+			buttons: [
+			  { text: 'Cancel' },
+			  {
+			    text: '<b>Save</b>',
+			    type: 'button-positive',
+			    onTap: function(e) {
+			      if ($scope.donnees.password == getPassword()) {
+			        return teamName;
+			      } else {
+			        e.preventDefault();
+			      }
+			    }
+			  }
+			]
+			});
+        }
+        else {
+        	console.log('Je suis un Team&=');
+			// An elaborate, custom popup
+			var myPopup = $ionicPopup.show({
+			template: '<input type="text" ng-model="donnees.nomTeam">',
+			title: 'Entrer le nom de l\'équipe',
+			scope: $scope,
+			buttons: [
+			  { text: 'Cancel' },
+			  {
+			    text: '<b>Save</b>',
+			    type: 'button-positive',
+			    onTap: function(e) {
+			      if (!$scope.donnees.nomTeam) {
+			        e.preventDefault();
+			      } else {
+			        return $scope.donnees.nomTeam;
+			      }
+			    }
+			  }
+			]
+			});
+        }
+
 
 		myPopup.then(function(res) {
 			console.log('Tapped!', res);
-			if(res){
-				var tousLesScores = JSON.parse(window.localStorage.getItem('score'));
+			if(res){				
+
+				var isArbitre = JSON.parse(window.localStorage.getItem('isArbitre'));
+
+
+		        console.log(' isArbitre : ');
+		        console.log(isArbitre);
+
+		        var tousLesScores = JSON.parse(window.localStorage.getItem('score'));
 
 		        if (!tousLesScores) { 
 		        	console.log('aucun score présent en base.');
@@ -162,20 +220,46 @@ module.exports = angular.module('myApp.mission', [])
 		        }
 		        else console.log('Il y a des scores dans la base');
 
+
+		        if(isArbitre){
+
+		        	var whoScore = 'scoreArbitre';
+
+			        var newScore = {
+						'Team' : res,
+						'ScoreTotal' : $scope.data.totalScore,
+						'ScoreM1' : $scope.data.scoreM1,
+						'ScoreM2' : $scope.data.scoreM2,
+						'ScoreM3' : $scope.data.scoreM3,
+						'ScoreM4' : $scope.data.scoreM4,
+						'ScoreM5' : $scope.data.scoreM5,
+						'ScoreM6' : $scope.data.scoreM6,
+						'Bonus' : $scope.data.bonus,
+						'Time' : $scope.timer
+					};
+
+		        }
+		        else {
+
+		        	var whoScore = 'score';
 					
-		        var newScore = {
-					'Team' : res,
-					'ScoreTotal' : $scope.data.totalScore,
-					'ScoreM1' : $scope.data.scoreM1,
-					'ScoreM2' : $scope.data.scoreM2,
-					'ScoreM3' : $scope.data.scoreM3,
-					'ScoreM4' : $scope.data.scoreM4,
-					'ScoreM5' : $scope.data.scoreM5,
-					'ScoreM6' : $scope.data.scoreM6,
-					'Bonus' : $scope.data.bonus,
-					'Time' : $scope.timer
-				};
-				
+			        var newScore = {
+						'Team' : res,
+						'ScoreTotal' : $scope.data.totalScore,
+						'ScoreM1' : $scope.data.scoreM1,
+						'ScoreM2' : $scope.data.scoreM2,
+						'ScoreM3' : $scope.data.scoreM3,
+						'ScoreM4' : $scope.data.scoreM4,
+						'ScoreM5' : $scope.data.scoreM5,
+						'ScoreM6' : $scope.data.scoreM6,
+						'Bonus' : $scope.data.bonus,
+						'Time' : $scope.timer
+					};
+		        	
+			    }
+
+		        console.log(' newScore : ');
+		        console.log(newScore);
 
 
 		        tousLesScores.push(newScore);
@@ -183,17 +267,18 @@ module.exports = angular.module('myApp.mission', [])
 		        console.log(' scores : ');
 		        console.log(tousLesScores);
 
-		        window.localStorage.setItem( 'score', JSON.stringify(tousLesScores));
+		        window.localStorage.setItem( whoScore, JSON.stringify(tousLesScores));
 
 
 			 	var alertPopup = $ionicPopup.alert({
-					title: 'Le fiche de score ' + res + ' a bien été enregistré',
+					title: 'Le fiche de score de l\'équipe ' + res + ' a bien été enregistré',
 					template: 'Score : ' + $scope.data.totalScore
 			   	});
 
 			   	alertPopup.then(function(res) {
         			$state.go('home.missionScores');
 			   	});
+				
 			}
 			else{
 			 	var alertPopup = $ionicPopup.alert({
@@ -413,9 +498,9 @@ module.exports = angular.module('myApp.mission', [])
 				$scope.data.scoreM4T1m1 = 15;
 				$scope.data.scoreM4T1m2 = 15;
 			}else{
-				if(bool1) $scope.data.scoreM4T1m1 = 5;
+				if(bool1) $scope.data.scoreM4T1m1 = 10;
 				else $scope.data.scoreM4T1m1 = 0;
-				if(bool2) $scope.data.scoreM4T1m2 = 5;
+				if(bool2) $scope.data.scoreM4T1m2 = 10;
 				else $scope.data.scoreM4T1m2 = 0;
 			}
 
@@ -433,9 +518,9 @@ module.exports = angular.module('myApp.mission', [])
 				$scope.data.scoreM4T2m1 = 15;
 				$scope.data.scoreM4T2m2 = 15;
 			}else{
-				if(bool4) $scope.data.scoreM4T2m1 = 5;
+				if(bool4) $scope.data.scoreM4T2m1 = 10;
 				else $scope.data.scoreM4T2m1 = 0;
-				if(bool5) $scope.data.scoreM4T2m2 = 5;
+				if(bool5) $scope.data.scoreM4T2m2 = 10;
 				else $scope.data.scoreM4T2m2 = 0;
 			}
 
@@ -463,7 +548,10 @@ module.exports = angular.module('myApp.mission', [])
   		var music = $scope.data.music;
 
   		if(music == 1 && whereMusic == 1){
-  			$scope.data.scoreM5 = 30;
+  			$scope.data.scoreM5 = 20;
+  		}
+  		else if(music == 1 && whereMusic == 2){
+			$scope.data.scoreM5 = 10;
   		}
   		else if(music == 2 && whereMusic == 1){
 			$scope.data.scoreM5 = 60;

@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 module.exports = angular.module('myApp.team', [])
 
@@ -15,10 +15,11 @@ module.exports = angular.module('myApp.team', [])
   console.log(team);
 
   console.log('team.users : ');
-  console.log(team.user);
+  console.log(team.student);
 
   $scope.name = team.name;
-  $scope.users = team.user;
+  $scope.bestScore = team.best_score;
+  $scope.users = team.student;
 
 
 /*

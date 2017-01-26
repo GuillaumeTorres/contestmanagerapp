@@ -2,39 +2,78 @@
 
 module.exports = angular.module('myApp.arbitre', [])
 
-.controller('ArbitreCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicSideMenuDelegate, $ionicPopup, $ionicLoading) {
+.controller('ArbitreCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicPopup, GlobalVar, myService) {
 	
 	console.log('ArbitreCtrl :)');	
+    
+	init();
 
-	$scope.show = false;
-    $http.get("team.json")                                            
-    .success(function(data, status, headers, config) {
-        var donnees = data;
-        console.log('donnees');
-        console.log(donnees);
-        $scope.card = donnees;  
-		$scope.show = true;            
-     });
+    var urlApi = GlobalVar.urlApi;   
 
-    $scope.selectTeam = function (team) {
-        console.log('ouiiiiiiiiiiiiiii');  
+    function init() {
 
-        console.log('team : ');
-        console.log(team);
-        var team = team;
+        console.log('Init');
+        $scope.showGroup = false;
+        $scope.showTeam = false;
+        $scope.showLoad = true;
+        $scope.titlePage = 'Choissisez une classe';
 
-        window.localStorage.removeItem('teamArbitre');
-        window.localStorage.setItem( 'teamArbitre', JSON.stringify(team));
-        window.localStorage.removeItem('type');
-        window.localStorage.setItem( 'type', 3);
-        $state.go('arbitre.mission');
+        myService.async("matchs/groups").then(function(d) {
 
+            console.log('Reel donnees : ');
+            var donnees = d;
+            console.log('donnees');
+            console.log(donnees);
+            $scope.card = donnees;  
+            $scope.showLoad = false;
+            $scope.showGroup = true; 
+        });
     }
 
-        var isArbitre = window.localStorage.getItem('isArbitre');
+    $scope.selectGroup = function (group) {
+        console.log('SelectGroup');
+        var idGroup = group.id;
+        var urlGroupId = 'groups/' + idGroup +  '/match';
 
-        console.log('isArbitre : ');
-        console.log(isArbitre);
+        $scope.showLoad = true;
+        $scope.showGroup = false;
 
-		
+        myService.async(urlGroupId).then(function(d) {;
+            console.log('Reel donnees selectGroup : ');
+            var donnees = d[0];
+            var team = donnees.team;
+            console.log('team selectGroup : ');
+            console.log(team);
+            $scope.card = team;  
+            $scope.showLoad = false;
+            $scope.showTeam = true; 
+            $scope.titlePage = 'Choissisez une équipe';
+        });
+
+        var type = 3;
+        console.log('idGroup : ');
+        console.log(idGroup);
+        /*window.localStorage.removeItem('team');
+        window.localStorage.setItem( 'team', JSON.stringify(team));
+        window.localStorage.removeItem('type');
+        window.localStorage.setItem( 'type', type);
+        $state.go('home.main');*/
+    }
+
+    $scope.selectTeam = function (team) {
+        console.log('SelectTeam');
+        console.log('team : ');
+        console.log(team);
+        var type = 3;
+        var team = team;
+        window.localStorage.removeItem('team');
+        window.localStorage.setItem( 'team', JSON.stringify(team));
+        window.localStorage.removeItem('type');
+        window.localStorage.setItem( 'type', type);
+        $state.go('arbitre.mission');
+    }
+
+    $scope.reset = function () {  
+        init();
+    }
 })

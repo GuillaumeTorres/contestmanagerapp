@@ -7,7 +7,6 @@ module.exports = angular.module('myApp.chooseUser', [])
 	console.log('ChooseUserCtrl :)');
 
     $scope.isArbitre = function (id) {
-    	console.log('s<jdf<jqsdfiijqsdmlfjqsmdlkfjqsmdlkfjmqsldkkfjw');
     	if(id == 1) {
 	        window.localStorage.removeItem('isArbitre');
 	        window.localStorage.setItem( 'isArbitre', false);
@@ -21,8 +20,7 @@ module.exports = angular.module('myApp.chooseUser', [])
     	else if(id == 3){
 	        window.localStorage.removeItem('isArbitre');
 	        window.localStorage.setItem( 'isArbitre', false);
-	        $state.go('login');
-
+	        $state.go('arbitre.searchTeam');
     	}
     	else {
 
