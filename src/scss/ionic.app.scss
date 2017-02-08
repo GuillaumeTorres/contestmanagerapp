@@ -43,7 +43,7 @@ body {
 }
 
 .cardMatch{
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 .divRange {
@@ -132,7 +132,7 @@ form {
 }
 
 .show_finish {
-  height: 190px !important; 
+  height: 190px !important;
 }
 
 .bonjour {
@@ -159,7 +159,7 @@ img:active {
     padding: 10px;
     display: block;
 
-    span {  
+    span {
         font-size: 22px;
         vertical-align: center;
     }
@@ -193,11 +193,11 @@ img:active {
     width: 100%;
     padding: 5px;
     height: auto;
-    
+
     .divBool{
       padding-right: 70px;
     }
-    
+
     label {
       font-size: 16px;
     }
@@ -209,7 +209,7 @@ img:active {
         height: auto;
         display: flex; /* contexte sur le parent */
         justify-content: center; /* alignement vertical */
-        
+
         .titleImg {
           width: 21%;
           display: flex;
@@ -244,7 +244,7 @@ img:active {
           }
         }
 
-        .imgMission {  
+        .imgMission {
             width: 50px;
         }
 
@@ -254,7 +254,7 @@ img:active {
     }
 
     .mission {
-        
+
         border: 1px solid #ddd;
 
         .boolMission {
@@ -379,7 +379,7 @@ img:active {
 }
 
 .titleScore {
-  
+
 }
 
 .divScore {
@@ -392,7 +392,7 @@ img:active {
 }
 
 .showScore {
-    height: auto;  
+    height: auto;
     padding: 5%;
     border: 1px;
 
@@ -425,7 +425,7 @@ form {
 }
 
 .toggle .track {
-    background-color: #E91E63;    
+    background-color: #E91E63;
     width: 100% !important;
     height: 100% !important;
     padding: 5px;
@@ -433,8 +433,8 @@ form {
 
 
 .Score {
-    
-} 
+
+}
 
 .divTitle {
   display: inline-block;
@@ -702,7 +702,7 @@ FIN PARTIE FEUILLE DE MISSION
     display: inline;
 }
 
-.divBackButton { 
+.divBackButton {
     position: relative;
     width: 100%;
     text-align: center;
@@ -711,9 +711,27 @@ FIN PARTIE FEUILLE DE MISSION
 
 
 
+.btnResetMatch{
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  border: 0px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  border-color: #dddddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
 
-
-
+.rotate {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
 
@@ -727,7 +745,7 @@ LES MEDIA QUERIES
 */
 
 @media (min-width: 850px) {
-    .imgMission {  
+    .imgMission {
       width: 100px;
     }
 
@@ -769,7 +787,7 @@ LES MEDIA QUERIES
 
 
   .showScore {
-      height: auto;  
+      height: auto;
       padding: 5%;
       line-height: 1;
 
@@ -794,8 +812,8 @@ LES MEDIA QUERIES
 
 
 @media (max-width: 350px) {
-   
-  .imgMission {  
+
+  .imgMission {
       width: 30px;
   }
 
