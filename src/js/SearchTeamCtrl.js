@@ -8,15 +8,18 @@ module.exports = angular.module('myApp.searchTeam', [])
 
     init();
 
-    var urlApi = GlobalVar.urlApi;   
+    var urlApi = GlobalVar.urlApi;
+    $scope.showRest = false;
+
 
     function init() {
 
         console.log('Init');
+        $scope.card = '';
+        $scope.titlePage = 'Choissisez une classe';
         $scope.showGroup = false;
         $scope.showTeam = false;
         $scope.showLoad = true;
-        $scope.titlePage = 'Choissisez une classe';
 
         myService.async("matchs/groups").then(function(d) {
 
@@ -24,9 +27,11 @@ module.exports = angular.module('myApp.searchTeam', [])
             var donnees = d;
             console.log('donnees');
             console.log(donnees);
-            $scope.card = donnees;  
+            $scope.card = donnees;
             $scope.showLoad = false;
-            $scope.showGroup = true; 
+            $scope.rotate = false;
+            $scope.showRest = true;
+            $scope.showGroup = true;
         });
     }
 
@@ -35,18 +40,17 @@ module.exports = angular.module('myApp.searchTeam', [])
         var idGroup = group.id;
         var urlGroupId = 'groups/' + idGroup +  '/match';
 
-        $scope.showLoad = true;
-        $scope.showGroup = false;
-
-        myService.async(urlGroupId).then(function(d) {;
+        myService.async(urlGroupId).then(function(d) {
             console.log('Reel donnees selectGroup : ');
             var donnees = d[0];
             var team = donnees.team;
             console.log('team selectGroup : ');
             console.log(team);
-            $scope.card = team;  
+            $scope.card = team;
             $scope.showLoad = false;
-            $scope.showTeam = true; 
+            $scope.showRest = false;
+            $scope.showGroup = false;
+            $scope.showTeam = true;
             $scope.titlePage = 'Choissisez une équipe';
         });
 
@@ -73,12 +77,17 @@ module.exports = angular.module('myApp.searchTeam', [])
         $state.go('home.main');
     }
 
-    $scope.reset = function () {  
+    $scope.reset = function () {
         init();
     }
-        
-        var isArbitre = window.localStorage.getItem('isArbitre');
 
-        console.log('isArbitre : ');
-        console.log(isArbitre);
+    $scope.searchAgain = function() {
+      $scope.rotate = true;
+      init();
+    }
+
+    var isArbitre = window.localStorage.getItem('isArbitre');
+
+    console.log('isArbitre : ');
+    console.log(isArbitre);
 })

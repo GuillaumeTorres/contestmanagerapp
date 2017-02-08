@@ -10,7 +10,7 @@
 				<span>{{team.name}}</span>
 			</div>
 		</div>
-		
+
 		<div class="divBackButton">
 	      <button class="button button-calm btnBackButton" ui-sref="chooseUser">Changer d'utilisateur</button>
 	      <button class="button button-calm btnBackButton" ng-click="reset()">Changer de groupe</button>
@@ -27,3 +27,9 @@
 		</div>
 	</div>
 </ion-view>
+
+<div class="divBtnResetMatch" ng-show="showRest">
+  <button class="btnResetMatch" ng-click='searchAgain()'>
+    <img class="imgTimer" src="assets/img/refresh.png" ng-class="{rotate: rotate}">
+  </button>
+</div>
