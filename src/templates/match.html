@@ -9,14 +9,16 @@
             <span class="col col-40 center">{{match.versus.score[0].team.name}}</span>
           </div>
           <div class="row">
-            <span class="col center">Table : {{match.versus.table_number}}</span>
+            <span class="col col-40 center">Score : {{match.score}}</span>
+            <span class="col col-20 center"></span>
+            <span class="col col-40 center">Score : {{match.versus.score[0].score}}</span>
           </div>
           <div class="row">
             <button class="col col-50 center button-clear" ui-sref='home.team({ id: match.team.id})'>Infos sur la team</button>
             <button class="col col-50 center button-clear" ui-sref='home.team({ id: match.versus.score[0].team.id})'>Infos sur la team</button>
           </div>
           <div class="row">
-            <span class="col center">Date : {{match.versus.date_match | date: 'fullDate'}}</span>
+            <span class="col center">Date : {{match.versus.date_match | date:"EEEE d MMMM 'à' H:mm":"+0000"}}</span>
           </div>
         </div>
       </div>
@@ -35,7 +37,7 @@
             <button class="col col-50 center button-clear" ui-sref='home.team({ id: match.versus.score[0].team.id})'>Infos sur la team</button>
           </div>
           <div class="row">
-            <span class="col center">Date : {{match.versus.date_match | date: 'fullDate'}}</span>
+            <span class="col center">Date : {{match.versus.date_match | date:"EEEE d MMMM 'à' H:mm":"+0000"}}</span>
           </div>
         </div>
       </div>

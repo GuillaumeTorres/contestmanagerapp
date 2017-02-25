@@ -586,6 +586,13 @@ input[type=range]:focus::-ms-fill-upper {
   text-align: center;
 }
 
+.waitPopup {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.popup-body {
+  text-align: center;
+}
 
 
 
@@ -603,7 +610,6 @@ FIN PARTIE FEUILLE DE MISSION
 .btn_arbitre {
     height: 70px;
 }
-
 
 .cardTeam {
   position: relative;
@@ -631,6 +637,12 @@ FIN PARTIE FEUILLE DE MISSION
   }
 }
 
+.cardError {
+
+    height: 300px;
+    text-align: center;
+    padding: 50% 0;
+}
 .test {
   position: relative;
 }
@@ -735,6 +747,9 @@ FIN PARTIE FEUILLE DE MISSION
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
+.matchFinish {
+  background-color: #b7b7b7;
+}
 
 
 

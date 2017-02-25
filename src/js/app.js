@@ -53,18 +53,44 @@ angular.module('myApp', [
 
 .factory('GlobalVar', function() {
     return {
-      urlApi : 'http://collab-lod.nexen.net:12345/api/'
+      urlApi : 'http://collab-lod.nexen.net:12345/api/',
+      urlApiDev : 'http://contestmanager.dev/api/',
     };
 })
 
 
-.factory('myService', function($http) {
+.factory('myService', function($http, GlobalVar) {
   var myService = {
     async: function(chemin) {
+      console.log('url GET : ');
       // $http returns a promise, which has a then function, which also returns a promise
-      var promise = $http.get('http://collab-lod.nexen.net:12345/api/' + chemin).then(function (response) {
+      // url prod : http://collab-lod.nexen.net:12345/api/
+      // url dev : http://contestmanager.dev/api/
+      console.log('url api : ');
+      console.log(GlobalVar.urlApiDev + chemin);
+      var promise = $http.get(GlobalVar.urlApiDev + chemin).then(function (response, headers) {
         // The return value gets picked up by the then in the controller.
-        return response.data;
+        return response;
+      }, function(reason) {
+        console.log('ERREUR API');
+        return reason;
+      });
+      // Return the promise to the controller
+      return promise;
+    },
+    asyncPost: function(chemin) {
+      console.log('url POST : ');
+      // $http returns a promise, which has a then function, which also returns a promise
+      // url prod : http://collab-lod.nexen.net:12345/api/
+      // url dev : http://contestmanager.dev/api/
+      console.log('url api : ');
+      console.log(GlobalVar.urlApiDev + chemin);
+      var promise = $http.post(GlobalVar.urlApiDev + chemin).then(function (response, headers) {
+        // The return value gets picked up by the then in the controller.
+        return response;
+      }, function(reason) {
+        console.log('ERREUR API');
+        return reason;
       });
       // Return the promise to the controller
       return promise;

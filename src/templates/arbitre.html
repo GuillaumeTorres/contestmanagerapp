@@ -1,13 +1,23 @@
 <ion-view view-title="{{titlePage}}">
 	<ion-content>
-		<div class="cardTeam" ng-repeat="group in card" ng-show="showGroup" ng-click="selectGroup(group)">
+		<div class="cardTeam" ng-repeat="group in groups" ng-show="showGroup" ng-click="selectGroup(group)">
 			<div class="nomGroupTeam">
 				<span>{{group.name}}</span>
 			</div>
 		</div>
-		<div class="cardTeam" ng-repeat="team in card" ng-show="showTeam" ng-click="selectTeam(team)">
+		<div class="cardTeam" ng-repeat="team in teams" ng-show="showTeam" ng-click="selectTeam(team)">
 			<div class="nomGroupTeam">
 				<span>{{team.name}}</span>
+			</div>
+		</div>
+		<div class="cardTeam" ng-repeat="match in matchs" ng-show="showMatch" ng-click="selectMatch(match)" ng-class="{matchFinish: match.versus.finished}" ng-disabled="match.versus.finished">
+			<div class="nomGroupTeam">
+				<span>Match N°{{$index + 1}}</span>
+			</div>
+		</div>
+		<div class="cardError" ng-show="showError">
+			<div class="nomGroupTeam">
+				<p>Aucun match n'a été trouvé</p>
 			</div>
 		</div>
 		
@@ -27,3 +37,18 @@
 		</div>
 	</div>
 </ion-view>
+
+<div class="divBtnResetMatch" ng-show="showRest">
+  <button class="btnResetMatch" ng-click='searchAgain()'>
+    <img class="imgTimer" src="assets/img/refresh.png" ng-class="{rotate: rotate}">
+  </button>
+</div>
+
+
+<div class="popup-container popup-showing active waitPopup" ng-class="cssClass" ng-show="waitPopup">
+	<div class="popup">
+		<div class="popup-head">
+			<h4>Envoie des données en cours</h4>
+		</div>
+	</div>
+</div>

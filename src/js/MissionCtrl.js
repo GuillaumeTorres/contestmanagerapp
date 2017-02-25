@@ -3,7 +3,7 @@
 module.exports = angular.module('myApp.mission', [])
 
 
-.controller('MissionCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicPopup, $timeout) {
+.controller('MissionCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams, $ionicPopup, $timeout, GlobalVar, myService) {
 
 	var data = init();
 
@@ -13,110 +13,109 @@ module.exports = angular.module('myApp.mission', [])
 		console.log(data);
 
 	function init() {
-
+		$scope.waitPopup = false;
 		console.log('Init');
-	    var data = {
-			rangeM3 : 10,
-			rangeM3Max: 10,
-			totalScore: 0,
-		    scoreM1: 0,
-		    scoreM2: 0,
-		    scoreM3: 0,
-		    scoreM4: 0,
-		    scoreM5: 0,
-		    scoreM6: 0,
-		    boolM1: false,
-		    bonus: 0,
-		    boolM1: 0,
-		    scoreM2Check: 0,
-		    scoreM1m1: 0,
-		    scoreM2m1: 0,
-		    scoreM2m2: 0,
-		    scoreM2m3: 0,
-		    scoreM2m4: 0,
-		    scoreM2m5: 0,
-		    range1: 4,
-			range2: 4,
-			range3: 4,
-			range4: 4,
-			range5: 4,
-			multiM2m1: 0,
-			multiM2m2: 0,
-			multiM2m3: 0,
-			multiM2m4: 0,
-			multiM2m5: 0,
-			penalite: 0,
-			rangeM3m1: 10,
-			rangeM3m2: 10,
-			rangeM3m3: 10,
-			rangeM3m4: 10,
-			rangeM3m5: 10,
-			rangeM3m6: 10,
-			range1M3m1 : 0,
-			range1M3m2 : 0,
-			range1M3m3 : 0,
-			range2M3m1 : 0,
-			range2M3m2 : 0,
-			range2M3m3 : 0,
-			range2M3m4 : 0,
-			score1M3m1 : 0,
-			score1M3m2 : 0,
-			score1M3m3 : 0,
-			score2M3m1 : 0,
-			score2M3m2 : 0,
-			score2M3m3 : 0,
-			score2M3m4 : 0,
-			scoreM4T1: 0,
-			scoreM4T2: 0,
-			boolM4m1T1: false,
-			boolM4m2T1: false,
-			boolM4m3T1: false,
-			boolM4m1T2: false,
-			boolM4m2T2: false,
-			boolM4m3T2: false,
-			scoreM4T1m1: 0,
-			scoreM4T1m2: 0,
-			scoreM4T1m3: 0,
-			scoreM4T2m1: 0,
-			scoreM4T2m2: 0,
-			scoreM4T2m3: 0,
-			whereMusic: 0,
-			music: 0,
-			robot: 0,
-			boolM5: false,
-			boolM6: 0,
-			bonus1: 0,
-			bonus2: 0,
-			bonus3: 0,
-			bonus4: 0,
-			showRange1M2:false,
-			choice: 0,
-			numberM2m1: 0,
-			numberM2m2: 0,
-			numberM2m3: 0,
-			numberM2m4: 0,
-			numberM2m5: 0,
-			number2M3m1: 0,
-			number2M3m2: 0,
-			number2M3m3: 0,
-			number1M3m1: 0,
-			number1M3m2: 0,
-			number1M3m3: 0,
-			statutConstruite: false
-		}
+        var data = {
+				rangeM3 : 10,
+				rangeM3Max: 10,
+				totalScore: 0,
+			    scoreM1: 0,
+			    scoreM2: 0,
+			    scoreM3: 0,
+			    scoreM4: 0,
+			    scoreM5: 0,
+			    scoreM6: 0,
+			    boolM1: false,
+			    bonus: 0,
+			    boolM1: 0,
+			    scoreM2Check: 0,
+			    scoreM1m1: 0,
+			    scoreM2m1: 0,
+			    scoreM2m2: 0,
+			    scoreM2m3: 0,
+			    scoreM2m4: 0,
+			    scoreM2m5: 0,
+			    range1: 4,
+				range2: 4,
+				range3: 4,
+				range4: 4,
+				range5: 4,
+				multiM2m1: 0,
+				multiM2m2: 0,
+				multiM2m3: 0,
+				multiM2m4: 0,
+				multiM2m5: 0,
+				penalite: 0,
+				rangeM3m1: 10,
+				rangeM3m2: 10,
+				rangeM3m3: 10,
+				rangeM3m4: 10,
+				rangeM3m5: 10,
+				rangeM3m6: 10,
+				range1M3m1 : 0,
+				range1M3m2 : 0,
+				range1M3m3 : 0,
+				range2M3m1 : 0,
+				range2M3m2 : 0,
+				range2M3m3 : 0,
+				range2M3m4 : 0,
+				score1M3m1 : 0,
+				score1M3m2 : 0,
+				score1M3m3 : 0,
+				score2M3m1 : 0,
+				score2M3m2 : 0,
+				score2M3m3 : 0,
+				score2M3m4 : 0,
+				scoreM4T1: 0,
+				scoreM4T2: 0,
+				boolM4m1T1: false,
+				boolM4m2T1: false,
+				boolM4m3T1: false,
+				boolM4m1T2: false,
+				boolM4m2T2: false,
+				boolM4m3T2: false,
+				scoreM4T1m1: 0,
+				scoreM4T1m2: 0,
+				scoreM4T1m3: 0,
+				scoreM4T2m1: 0,
+				scoreM4T2m2: 0,
+				scoreM4T2m3: 0,
+				whereMusic: 0,
+				music: 0,
+				robot: 0,
+				boolM5: false,
+				boolM6: 0,
+				bonus1: 0,
+				bonus2: 0,
+				bonus3: 0,
+				bonus4: 0,
+				showRange1M2:false,
+				choice: 0,
+				numberM2m1: 0,
+				numberM2m2: 0,
+				numberM2m3: 0,
+				numberM2m4: 0,
+				numberM2m5: 0,
+				number2M3m1: 0,
+				number2M3m2: 0,
+				number2M3m3: 0,
+				number1M3m1: 0,
+				number1M3m2: 0,
+				number1M3m3: 0,
+				statutConstruite: false
+			}
+	    
 
 		return data;
 
 	}
 
 
-	function getPassword() {
+	function getTeamName() {
 
-		console.log('getPassword');
-		var password = 'arbitre'
-
-		return password;
-
+        var team = JSON.parse(window.localStorage.getItem('team'));
+ 
+		return team.name;    
 	}
 
 	$scope.btnReset = function() {
@@ -149,17 +148,15 @@ module.exports = angular.module('myApp.mission', [])
 
         if(isArbitre){
 
-			var teamArbitre = JSON.parse(window.localStorage.getItem('teamArbitre'));
-
-
 	        console.log(' teamArbitre : ');
-	        console.log(teamArbitre);
-	        var teamName = teamArbitre.name;
+	        console.log(getTeamName());
+	        var teamName = getTeamName();
         	console.log('Je suis un Arbitre');
 			// An elaborate, custom popup
 			var myPopup = $ionicPopup.show({
-			template: '<input type="password" ng-model="donnees.password">',
-			title: 'Entrer le mot de pass',
+			template: 'Score : ' + $scope.data.totalScore,
+			title: 'Etes-vous sûr ?',
+			subTitle: 'Equipe : ' + teamName,
 			scope: $scope,
 			buttons: [
 			  { text: 'Cancel' },
@@ -167,11 +164,7 @@ module.exports = angular.module('myApp.mission', [])
 			    text: '<b>Save</b>',
 			    type: 'button-positive',
 			    onTap: function(e) {
-			      if ($scope.donnees.password == getPassword()) {
-			        return teamName;
-			      } else {
-			        e.preventDefault();
-			      }
+			      	return teamName;
 			    }
 			  }
 			]
@@ -204,6 +197,7 @@ module.exports = angular.module('myApp.mission', [])
 
 		myPopup.then(function(res) {
 			console.log('Tapped!', res);
+
 			if(res){				
 
 				var isArbitre = JSON.parse(window.localStorage.getItem('isArbitre'));
@@ -222,21 +216,110 @@ module.exports = angular.module('myApp.mission', [])
 
 
 		        if(isArbitre){
+		        	$scope.waitPopup = true;
 
-		        	var whoScore = 'scoreArbitre';
 
-			        var newScore = {
-						'Team' : res,
-						'ScoreTotal' : $scope.data.totalScore,
-						'ScoreM1' : $scope.data.scoreM1,
-						'ScoreM2' : $scope.data.scoreM2,
-						'ScoreM3' : $scope.data.scoreM3,
-						'ScoreM4' : $scope.data.scoreM4,
-						'ScoreM5' : $scope.data.scoreM5,
-						'ScoreM6' : $scope.data.scoreM6,
-						'Bonus' : $scope.data.bonus,
-						'Time' : $scope.timer
-					};
+					var id_match = 0;
+					var id_team = 0;
+					var score = $scope.data.totalScore;
+
+		        	var team = JSON.parse(window.localStorage.getItem('team'));
+			        var id_team = team.id;
+			       	var id_match =  window.localStorage.getItem('matchScored');
+					
+					var urlSendScore = 'matchs/team/score?id_match=' + id_match + '&id_team=' + id_team + '&score=' + score;
+
+					myService.asyncPost(urlSendScore).then(function(d) {
+			            console.log('Reel donnees selectTeam : ');
+			            console.log(d);
+			            var matchs = d;
+		        		$scope.waitPopup = false;
+			            if(d.status == 400) {
+			                console.log('Problème lors du POST');
+
+						 	var alertPopup = $ionicPopup.alert({
+								title: 'Un problème a été enregistré',
+								template: 'Suite au problème les données n\'ont pas étaient enregistrées'
+						   	});
+
+						   	alertPopup.then(function(res) {
+						     	console.log('Merci');
+						   	});
+
+			            }
+			            else if(d.status == 404){
+			                console.log('Problème lors du POST Match ou team non trouvé');
+
+						 	var alertPopup = $ionicPopup.alert({
+								title: 'La team ou le match n\'a pas été trouvé',
+								template: 'Suite au problème les données n\'ont pas étaient enregistrées'
+						   	});
+
+						   	alertPopup.then(function(res) {
+						     	console.log('Merci');
+						   	});
+			            }
+			            else if(d.status == 200) {
+			                console.log('POST OK');
+			                var whoScore = 'scoreArbitre';
+				        	var team = JSON.parse(window.localStorage.getItem('team'));
+					        var idTeam = team.id;
+        					var idVersus = JSON.parse(window.localStorage.getItem('matchScored'));
+
+					        var newScore = {
+								'Team' : res,
+								'ScoreTotal' : $scope.data.totalScore,
+								'ScoreM1' : $scope.data.scoreM1,
+								'ScoreM2' : $scope.data.scoreM2,
+								'ScoreM3' : $scope.data.scoreM3,
+								'ScoreM4' : $scope.data.scoreM4,
+								'ScoreM5' : $scope.data.scoreM5,
+								'ScoreM6' : $scope.data.scoreM6,
+								'Bonus' : $scope.data.bonus,
+								'idTeam' : idTeam,
+								'idVersus' : idVersus,
+								'Time' : $scope.timer
+							};
+
+
+					        console.log(' newScore : ');
+					        console.log(newScore);
+
+
+					        tousLesScores.push(newScore);
+
+					        console.log(' scores : ');
+					        console.log(tousLesScores);
+
+					        window.localStorage.setItem( whoScore, JSON.stringify(tousLesScores));
+
+
+						 	var alertPopup = $ionicPopup.alert({
+								title: 'Le fiche de score de l\'équipe ' + res + ' a bien été enregistré',
+								template: 'Score : ' + $scope.data.totalScore
+						   	});
+
+						   	alertPopup.then(function(res) {
+			        			$state.go('home.missionScores');
+						   	});
+					    }
+					    else {
+					    	
+			                console.log('Problème lors du POST');
+
+						 	var alertPopup = $ionicPopup.alert({
+								title: 'Un problème a été enregistré',
+								template: 'Suite au problème les données n\'ont pas étaient enregistrées'
+						   	});
+
+						   	alertPopup.then(function(res) {
+						     	console.log('Merci');
+						   	});
+					    }
+			            
+			        }); 
+
+		        	
 
 		        }
 		        else {
@@ -255,29 +338,30 @@ module.exports = angular.module('myApp.mission', [])
 						'Bonus' : $scope.data.bonus,
 						'Time' : $scope.timer
 					};
+
+					console.log(' newScore : ');
+			        console.log(newScore);
+
+
+			        tousLesScores.push(newScore);
+
+			        console.log(' scores : ');
+			        console.log(tousLesScores);
+
+			        window.localStorage.setItem( whoScore, JSON.stringify(tousLesScores));
+
+
+				 	var alertPopup = $ionicPopup.alert({
+						title: 'Le fiche de score de l\'équipe ' + res + ' a bien été enregistré',
+						template: 'Score : ' + $scope.data.totalScore
+				   	});
+
+				   	alertPopup.then(function(res) {
+	        			$state.go('home.missionScores');
+				   	});
 		        	
 			    }
 
-		        console.log(' newScore : ');
-		        console.log(newScore);
-
-
-		        tousLesScores.push(newScore);
-
-		        console.log(' scores : ');
-		        console.log(tousLesScores);
-
-		        window.localStorage.setItem( whoScore, JSON.stringify(tousLesScores));
-
-
-			 	var alertPopup = $ionicPopup.alert({
-					title: 'Le fiche de score de l\'équipe ' + res + ' a bien été enregistré',
-					template: 'Score : ' + $scope.data.totalScore
-			   	});
-
-			   	alertPopup.then(function(res) {
-        			$state.go('home.missionScores');
-			   	});
 				
 			}
 			else{
@@ -293,14 +377,6 @@ module.exports = angular.module('myApp.mission', [])
 			}
 			
 		});
-
-
-		if (!$scope.donnees.nomTeam) {
-	        
-      	} 
-      	else {
-	      	
-      	}
         
 	}
 

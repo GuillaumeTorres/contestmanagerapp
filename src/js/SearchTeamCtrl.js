@@ -24,14 +24,32 @@ module.exports = angular.module('myApp.searchTeam', [])
         myService.async("matchs/groups").then(function(d) {
 
             console.log('Reel donnees : ');
-            var donnees = d;
+            console.log(d);
+            var donnees = d.data;
             console.log('donnees');
             console.log(donnees);
-            $scope.card = donnees;
-            $scope.showLoad = false;
-            $scope.rotate = false;
-            $scope.showRest = true;
-            $scope.showGroup = true;
+            if(d.status == 200){
+                $scope.card = donnees;
+                $scope.showLoad = false;
+                $scope.rotate = false;
+                $scope.showRest = true;
+                $scope.showGroup = true;    
+            }else{
+                popupError();
+            }
+            
+        });
+    }
+
+    function popupError() {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Un problème est survenu',
+            template: 'Aucune données n\'a été trouvé'
+        });
+
+        alertPopup.then(function() {
+            console.log('Merci');
+            $state.go('chooseUser');
         });
     }
 
@@ -42,16 +60,21 @@ module.exports = angular.module('myApp.searchTeam', [])
 
         myService.async(urlGroupId).then(function(d) {
             console.log('Reel donnees selectGroup : ');
-            var donnees = d[0];
+            console.log(d);
+            var donnees = d.data[0];
             var team = donnees.team;
             console.log('team selectGroup : ');
             console.log(team);
-            $scope.card = team;
-            $scope.showLoad = false;
-            $scope.showRest = false;
-            $scope.showGroup = false;
-            $scope.showTeam = true;
-            $scope.titlePage = 'Choissisez une équipe';
+            if(d.status == 200){
+                $scope.card = team;
+                $scope.showLoad = false;
+                $scope.showRest = false;
+                $scope.showGroup = false;
+                $scope.showTeam = true;
+                $scope.titlePage = 'Choissisez une équipe';
+            }else{
+                popupError();
+            }
         });
 
         var type = 3;
@@ -73,8 +96,7 @@ module.exports = angular.module('myApp.searchTeam', [])
         window.localStorage.removeItem('team');
         window.localStorage.setItem( 'team', JSON.stringify(team));
         window.localStorage.removeItem('type');
-        window.localStorage.setItem( 'type', type);
-        $state.go('home.main');
+        window.localStorage.setItem( 'type', type);        $state.go('home.main');        $state.go('home.main');
     }
 
     $scope.reset = function () {

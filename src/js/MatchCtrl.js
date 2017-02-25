@@ -26,18 +26,24 @@ module.exports = angular.module('myApp.match', [])
 
     myService.async(urlMatch).then(function(d) {
       console.log('Reel donnees match : ');
-      var donnees = d;
+      var donnees = d.data;
+      $scope.matchsFinish = [];
+      $scope.matchsNotFinish = [];
       console.log('donnees : ');
       console.log(donnees);
 
       angular.forEach(donnees, function(value) {
         var finished = value.versus.finished;
 
-        if(finished) $scope.matchsFinish = donnees;
-        else $scope.matchsNotFinish = donnees;
+        if(finished) $scope.matchsFinish.push(value);
+        else $scope.matchsNotFinish.push(value);
 
       });
 
+      console.log('$scope.matchsFinish : ');
+      console.log($scope.matchsFinish);
+      console.log('$scope.matchsNotFinish : ');
+      console.log($scope.matchsNotFinish);
 
       $scope.showLoad = false;
       $scope.rotate = false;
