@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "date": "02-15-1970 01:41:01",
+    "halfDay": "Am",
+    "name": "Naxdis"
+  },
+  {
+    "index": 1,
+    "date": "03-15-1992 05:23:36",
+    "halfDay": "Pm",
+    "name": "Luxuria"
+  },
+  {
+    "index": 2,
+    "date": "06-10-1981 05:48:19",
+    "halfDay": "Pm",
+    "name": "Animalia"
+  },
+  {
+    "index": 3,
+    "date": "09-15-1979 09:16:52",
+    "halfDay": "Am",
+    "name": "Entropix"
+  },
+  {
+    "index": 4,
+    "date": "09-07-1982 10:16:55",
+    "halfDay": "Am",
+    "name": "Cedward"
+  },
+  {
+    "index": 5,
+    "date": "05-02-1995 07:38:56",
+    "halfDay": "Pm",
+    "name": "Visalia"
+  }
+]

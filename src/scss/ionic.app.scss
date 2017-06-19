@@ -22,19 +22,53 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "src/lib/ionic/scss/ionic";
 
 
+
+/*
+FOOTER EN DEV
+*/
+
+.footer {
+  display: none !important;
+}
+
+
 /* Empty. Add your own CSS if you like */
 
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+    white-space: normal;
+}
+
+body {
+  font-family: 'Arial' !important;
+}
+
+.cardMatch{
+  overflow-y: hidden;
+}
+
+.divRange {
+  position: relative;
+}
 p {
-	margin: 0;
+  margin: 0;
+    font-size: 16px;
+}
+
+form {
+  margin: 10px 0;
+}
+
+.toggle .track {
+    background-color: #E91E63;
 }
 
 .m_content {
-	height:100%;
-	top: 10%;
+  height:100%;
+  top: 10%;
 }
 
 .m_button {
-	height: 16%;
+  height: 16%;
 }
 
 .center {
@@ -42,40 +76,47 @@ p {
 }
 
 .show {
-	height: 170px !important;
+  height: 170px !important;
 }
 
 .center{
-	text-align: center;
+  text-align: center;
 }
 
 .btn-infos{
-	margin-left: 32%;
+  margin-left: 32%;
 }
 
 .div_match{
-	height: 70px;
-	transition: height 1s;
+  height: 70px;
 }
 
 .div_match_active{
-	height: 50px !important;
+  height: 50px !important;
 }
 
 .block{
-	display: block;
+  display: block;
+}
+
+.none{
+  display: none;
 }
 
 .finish {
-	background-color: #0FEF20;
+  background-color: #0FEF20;
 }
 
 .not-finish {
-	background-color: #FF5800;
+  background-color: #FF5800;
+}
+
+.backRed div div{
+  background-color: #E91E63 !important;
 }
 
 .login {
-	visibility: hidden;
+  visibility: hidden;
 }
 
 .show_finish {
@@ -91,33 +132,519 @@ p {
 }
 
 .show_finish {
-  height: 190px !important; 
+  height: 190px !important;
 }
 
 .bonjour {
-	text-align: center;
-	width: 100%;
-	margin: auto;
-	height: 20px;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  height: 20px;
 }
+
+
+
+img:active {
+  background-color: grey;
+}
+
+.info {
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    z-index: 99;
+    background-color: white;
+    text-align: center;
+    font-size: 5vW;
+    padding: 10px;
+    display: block;
+
+    span {
+        font-size: 22px;
+        vertical-align: center;
+    }
+
+    .scoreTotal {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .divBtn {
+      display: block;
+      width: 100%;
+
+      button {
+        width: 30%;
+        display: inline-block;
+      }
+    }
+
+    .timer {
+      margin-top: 15px;
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+    }
+}
+
+.cardMission {
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    height: auto;
+
+    .divBool{
+      padding-right: 70px;
+    }
+
+    label {
+      font-size: 16px;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        background-color: #e2e2e2;
+        height: auto;
+        display: flex; /* contexte sur le parent */
+        justify-content: center; /* alignement vertical */
+
+        .titleImg {
+          width: 21%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+          }
+        }
+
+        .titleTitle {
+          width: 46%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+            font-size: 34px !important;
+          }
+        }
+
+        .titleScore {
+          width: 21%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          span {
+            margin: auto;
+          }
+        }
+
+        .imgMission {
+            width: 50px;
+        }
+
+        .scoreMission{
+
+        }
+    }
+
+    .mission {
+
+        border: 1px solid #ddd;
+
+        .boolMission {
+            position: absolute;
+            top: 11px;
+            right: 15px;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .divMission{
+
+            .divLabelM2 {
+                position: relative;
+                display: block;
+
+                label {
+                  width: 85%;
+                  display: inline-block;
+                }
+
+                .scoreM2 {
+                  display: inline-block;
+                  width: 9%;
+                }
+            }
+        }
+
+        .scoreM4 {
+          position: absolute;
+          right: 20px;
+        }
+
+        .divMissionRadio {
+            height: auto;
+
+            .sousMission {
+                height: 50px;
+            }
+
+            .sousMissionRadio {
+                line-height: 50px;
+                position: relative;
+                margin: 5px 0;
+            }
+        }
+
+    }
+}
+
+.divStatueConstruit {
+  width: 95%;
+  margin: 10px auto 0 auto;
+}
+
+.margHeaderMission {
+    top: 185px;
+}
+
+.margContentScore {
+  margin-bottom: 50px;
+}
+
+.btnGoMission {
+  position: fixed;
+  bottom: 10px;
+}
+
+.mesRadio {
+    width: 50px;
+    background: none;
+    /* border: none; */
+    position: absolute;
+    top: 0;
+    right: 16px;
+    height: 50px;
+
+    .divRadio {
+        padding: 0;
+    }
+
+    .iRadion {
+        top: -20px;
+        padding: 0;
+        width: 100%;
+        font-size: 60px;
+    }
+}
+
+.mesItem {
+    border-color: #ddd;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
+
+    label {
+        font-size: 16px;
+    }
+}
+
+.labelM5 {
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    padding: 16px 16px 0 0;
+    font-size: 16px;
+
+    label {
+        font-size: 16px;
+    }
+}
+
+.titleScore {
+
+}
+
+.divScore {
+    height: 0;/* l'opacite que vous voulez au depart */
+    padding: 0;
+
+    p{
+      display: none;
+    }
+}
+
+.showScore {
+    height: auto;
+    padding: 5%;
+    border: 1px;
+
+
+    p{
+      display: block;
+    }
+}
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+    white-space: normal;
+}
+
+
+.repBool {
+  font-size: 100% !important;
+  color: white;
+}
+
+.divRange {
+  position: relative;
+}
+p {
+  margin: 0;
+    font-size: 16px;
+}
+
+form {
+  margin: 15px 0 0 0;
+}
+
+.toggle .track {
+    background-color: #E91E63;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5px;
+}
+
+
+.Score {
+
+}
+
+.divTitle {
+  display: inline-block;
+  width: 85%;
+}
+
+.divRemove {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+  height: 100%;
+  vertical-align: top;
+}
+
+.imgRemove {
+  width: 40px;
+}
+
+.imgTimer {
+  width: 25px;
+}
+
+.popup{width: 50%;}
+
+/*Input Range*/
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px 0 0 0;
+  width: 100%;
+  height: 40px;
+}
+input[type=range]:focus {
+  outline: none;
+}/*
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}*/
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -16px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #3071A9;
+  height: 50px;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+  background: #3071A9;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 29px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #3071A9;
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 4px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071A9;
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 4px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 4px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 29px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #4cd964;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #4cd964;
+}
+
+.item-radio input:checked + .radio-content .item-content {
+    background: #4cd964 !important;
+}
+
+.rangeGood::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 18px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+    background: #4cd964;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+
+.rangeNotGood::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 18px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 4px #000000;
+  background: #f86262;
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+
+.selectPenalite {
+  width: 54%;
+  border: 0,5px;
+  border-radius: 50px;
+}
+
+.divSelectPenalite {
+  text-align: center;
+}
+
+.waitPopup {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.popup-body {
+  text-align: center;
+}
+
+
+
+
+
+
+
+/*
+
+FIN PARTIE FEUILLE DE MISSION
+
+*/
+
 
 .btn_arbitre {
     height: 70px;
 }
 
 .cardTeam {
-    margin: 4%;
-    width: auto;
-    min-width: 25%;
+  position: relative;
+  margin: 4%;
+  width: 25%;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 1.4rem;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  height: 80px;
+  float: left;
+
+  .nomGroupTeam {
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+
+    span {
+      line-height: 1;
+      font-size: 90% !important;
+    }
+  }
+}
+
+.cardError {
+
+    height: 300px;
     text-align: center;
-    border-radius: 2px;
-    font-size: 1.4rem;
-    background: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    height: 80px;
-    line-height: 80px;
-    white-space: nowrap;
-    float: left;
+    padding: 50% 0;
+}
+.test {
+  position: relative;
 }
 
 .loader {
@@ -174,5 +701,180 @@ p {
         height: 20px;
         line-height: 10px;
     }
+
+}
+
+.paddingIonContent {
+  padding: 50% 10px;
+}
+
+
+.btnBackButton{
+    width: 49%;
+    display: inline;
+}
+
+.divBackButton {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+
+
+.btnResetMatch{
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  border: 0px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  border-color: #dddddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.rotate {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+.matchFinish {
+  background-color: #b7b7b7;
+}
+
+
+
+
+/*
+
+LES MEDIA QUERIES
+
+*/
+
+@media (min-width: 850px) {
+    .imgMission {
+      width: 100px;
+    }
+
+    .imgTimer {
+      width: 50px;
+    }
+    .margHeaderMission {
+      top: 185px;
+    }
+
+    .info {
+      top: 30px;
+  }
+
+  label, input, button, select, textarea, span {
+      font-size: 30px !important;
+  }
+
+  p {
+    font-size: 34px !important;
+  }
+
+  .popup{
+    width: 60% !important;
+
+    h3 {
+      font-size: 26px;
+    }
+
+    .popup-body {
+      font-size: 30px;
+    }
+  }
+
+  .divTitle {
+    min-height: 100px;
+    line-height: 1;
+  }
+
+
+  .showScore {
+      height: auto;
+      padding: 5%;
+      line-height: 1;
+
+  }
+
+
+  .cardTeam {
+      height: 200px;
+  }
+}
+
+@media (max-width: 850px) and (orientation: landscape) {
+  .choosUserView {
+    height: 100%;
+  }
+
+  .paddingIonContent {
+    padding: 10px;
+  }
+}
+
+
+
+@media (max-width: 350px) {
+
+  .imgMission {
+      width: 30px;
+  }
+
+  .cardMission .title .titleScore {
+      width: 25%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+      }
+  }
+
+  .cardMission .title .titleTitle {
+      width: 46%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+        font-size: 26px !important;
+      }
+  }
+
+  .cardMission .title .titleImg {
+      width: 21%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        margin: auto;
+      }
+  }
+
+  label, input, button, select, textarea, span {
+      font-size: 18px !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  .popup{width: 70%;}
 
 }

@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 module.exports = angular.module('myApp.team', [])
 
@@ -6,11 +6,23 @@ module.exports = angular.module('myApp.team', [])
 .controller('TeamCtrl', function ($scope, $ionicPopover, $http, $state, $stateParams) {
   
   console.log('TeamCtrl :)');
-
-  console.log('Id = ' + $stateParams.id);
-  var id = $stateParams.id;
   $scope.lol = true;
 
+
+  var team = JSON.parse(window.localStorage.getItem('team'));
+
+  console.log('team : ');
+  console.log(team);
+
+  console.log('team.users : ');
+  console.log(team.student);
+
+  $scope.name = team.name;
+  $scope.bestScore = team.best_score;
+  $scope.users = team.student;
+
+
+/*
   $http.get("team.json")                                            
   .success(function(data, status, headers, config) {
       var donnees = data;
@@ -30,26 +42,5 @@ module.exports = angular.module('myApp.team', [])
       console.log('Variable team : ');
       console.log(team[0]);
       $scope.team = team[0];                    
-   });
-
-
-
-  // Simple GET request example:
-  // $http({
-  //   method: 'GET',
-  //   url: 'http://contestmanager.dev/api/teams/' + id
-  // }).then(function successCallback(response) {
-  //     // this callback will be called asynchronously
-  //     // when the response is available*
-  //     console.log('trucMuche');
-  //     console.log(response.data);
-  //     var data = response.data;
-
-  //     $scope.team = data;
-  //     //$scope.user = response.data[3];
-  //   }, function errorCallback(response) {
-  //     // called asynchronously if an error occurs
-  //     // or server returns response with an error status.
-  //     console.log('TrucMachin');
-  //   });
+   });*/
 })

@@ -1,0 +1,28 @@
+<ion-view view-title="Mes Scores">
+	<ion-content class="margContentScore">
+		<div ng-repeat="score in donnees" class="card" id="score{{$index}}">
+		  <div class="item item-text-wrap" >
+		  	<div class="divTitle" ng-click="show = !show">
+			    <p class="titleScore">Nom de la fiche de score : {{score.Team}}</p>
+			    <p class="titleScore">Score : {{score.ScoreTotal}}</p>
+			    <p class="titleScore">Temps : {{score.Time | secondsToHHmmss}}</p>
+		  	</div>
+		  	<div class="divRemove">
+				<img class="imgRemove" src="assets/img/removeIcom.png" ng-click="removeScore($index)">
+		  	</div>
+		  </div>
+		  <div class="item item-text-wrap divScore" ng-class="{showScore: show}">
+		    <p class="Score" ng-show="score.ScoreChang">{{score.ScoreChang}}</p>
+		    <p class="Score">Score de la mission 1 : {{score.ScoreM1}}</p>
+		    <p class="Score">Score de la mission 2 : {{score.ScoreM2}}</p>
+		    <p class="Score">Score de la mission 3 : {{score.ScoreM3}}</p>
+		    <p class="Score">Score de la mission 4 : {{score.ScoreM4}}</p>
+		    <p class="Score">Score de la mission 5 : {{score.ScoreM5}}</p>
+		    <p class="Score">Score de la mission 6 : {{score.ScoreM6}}</p>
+		    <p class="Score">Score du Bonus : {{score.Bonus}}</p>
+		  </div>
+		</div>
+	</ion-content>
+
+	<button class="btnGoMission button button-block button-positive" ng-model="btnGoMission" ng-click="btnGoMission()">Feuille de mission</button>
+</ion-view>
